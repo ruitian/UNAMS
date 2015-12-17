@@ -5,6 +5,6 @@ from wtforms.validators import Required
 
 
 class LoginForm(Form):
-    username = StringField('Username', validators=[Required()])
-    password = PasswordField('Password', validators=[Required()])
-    submit = SubmitField('Submit')
+    username = StringField(u'用户名', validators=[Required()])
+    password = PasswordField(u'密码', validators=[Required()])
+    submit = SubmitField(u'登陆')
