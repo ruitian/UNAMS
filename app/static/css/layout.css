@@ -1,0 +1,149 @@
+body {
+	background: #EEE;
+}
+
+#content {
+	background: white;
+	border: 1px solid #CCC;
+	padding: 15px 20px 30px 35px;
+}
+
+#content .row {
+    margin-left: 0px;
+}
+
+#brand {
+    display: inline;
+}
+
+.search-form {
+	margin: 0 ;
+}
+
+.search-form form {
+	margin: 0;
+}
+
+.menu_bar {
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+
+table.filters tr.form-horizontal{
+  display:block;
+}
+
+tr.form-horizontal td{
+  width: 200px;
+}
+
+tr.form-horizontal td a{
+  width: 100%;
+}
+
+/* List View - fix trash icon inside table column */
+.model-list form.icon {
+    display: inline;
+}
+
+.model-list form.icon button {
+    border: none;
+    background: transparent;
+    text-decoration: none;
+    padding: 0;
+    line-height: normal;
+}
+
+/* List View - prevent link icons from differing from trash icon */
+.model-list a.icon {
+    text-decoration: none;
+    margin-left: 10px;
+    color: inherit;
+}
+
+/* List View - fix checkbox column width */
+.list-checkbox-column {
+    width: 14px;
+}
+
+/* List View - fix overlapping border between actions and table */
+.model-list  {
+    position: relative;
+    margin-top: -1px;
+    z-index: 999;
+}
+
+/* List View Search Form - fix gap between form and table */
+.actions-nav form.navbar-form {
+    margin: 1px 0 0 0;
+}
+
+/* Filters */
+table.filters {
+    border-collapse: collapse;
+    border-spacing: 4px;
+}
+
+/* prevents gap between table and actions while there are no filters set */
+table.filters:not(:empty) {
+  margin: 5px 0 5px 0;
+}
+
+/* spacing between filter X button, operation, and value field */
+/* uses tables instead of form classes for bootstrap2-3 compatibility */
+table.filters tr td {
+    padding-right: 5px;
+    padding-bottom: 3px;
+}
+
+/* Filters - Select2 Boxes */
+.filters .filter-op {
+    width: 100%;
+}
+
+.filters .filter-val {
+    width: 220px;
+}
+
+/* Image thumbnails */
+.image-thumbnail img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+/* Forms */
+/* required because form-horizontal removes top padding */
+.admin-form {
+    margin-top: 35px;
+}
+
+/* Form Field Description - Appears when field has 'description' attribute */
+/* Test with: form_args = {'name':{'description': 'test'}} */
+/* prevents awkward gap after help-block - This is default for bootstrap2 */
+.admin-form  .help-block {
+    margin-bottom: 0px;
+}
+
+.btn-group {
+  margin-left: 7px;
+}
+
+.btn, textarea, input[type], button, .model-list {
+	border-radius: 4px;
+}
+
+.model-list {
+	border-radius: 0;
+}
+
+.nav-pills li > a {
+	border-radius: 0;
+}
+
+.select2-container .select2-choice {
+	border-radius: 0;
+}
+
+a.dropdown-toggle b.caret {
+    margin-left: 5px;
+}

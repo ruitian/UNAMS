@@ -1,0 +1,115 @@
+{% import 'admin/layout.html' as layout with context -%}
+{% import 'admin/static.html' as admin_static with context %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}{% if admin_view.category %}{{ admin_view.category }} - {% endif %}{{ admin_view.name }} - {{ admin_view.admin.name }}{% endblock %}</title>
+    {% block head_meta %}
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+    {% endblock %}
+    {% block head_css %}
+        <link href="{{ admin_static.url(filename='bootstrap/bootstrap3/css/bootstrap.min.css') }}" rel="stylesheet">
+        <!--link href="{{ admin_static.url(filename='bootstrap/bootstrap3/css/bootstrap-theme.min.css') }}" rel="stylesheet"-->
+        <style>
+        body {
+            padding-top: 0px;
+        }
+        </style>
+
+        <link href="{{ url_for('static', filename='css/layout.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/sb-admin-2.css')}}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+    {% endblock %}
+    {% block head %}
+    {% endblock %}
+    {% block head_tail %}
+    {% endblock %}
+  </head>
+  <body>
+    {% block page_body %}
+
+      <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              {% block brand %}
+              <a class="navbar-brand" href="#">{{ admin_view.admin.name }}</a>
+              {% endblock %}
+          </div>
+          <!-- /.navbar-header -->
+
+          <ul class="nav navbar-top-links navbar-right">
+              <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                      <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                  </a>
+                  <ul class="dropdown-menu dropdown-user">
+                      <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                      </li>
+                      <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                      </li>
+                      <li class="divider"></li>
+                      <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
+          <!-- /.navbar-top-links -->
+
+          <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+              <ul class="nav" id="side-menu">
+        {{ layout.menu() }}
+        {{ layout.menu_links() }}
+              </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+          </div>
+          <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+          <div class="row">
+            <div class="col-md-12" style="margin-top:15px">
+              {% block _brand %}
+              <h2 id="brand">{{ admin_view.name|capitalize }}</h2>
+              {% endblock %}
+              {{ layout.messages() }}
+
+              {% set render_ctx = h.resolve_ctx() %}
+
+              {% block body %}{% endblock %}
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    {% endblock %}
+
+    {% block tail_js %}
+    <script src="{{ admin_static.url(filename='vendor/jquery-2.1.1.min.js') }}" type="text/javascript"></script>
+    <script src="{{ admin_static.url(filename='bootstrap/bootstrap3/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ admin_static.url(filename='vendor/moment-2.8.4.min.js') }}" type="text/javascript"></script>
+    <script src="{{ admin_static.url(filename='vendor/select2/select2.min.js') }}" type="text/javascript"></script>
+
+    <script src="{{ url_for('static', filename='js/metisMenu.min.js')}}"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="{{ url_for('static', filename='js/sb-admin-2.js')}}"></script>
+    {% endblock %}
+
+    {% block tail %}
+    {% endblock %}
+  </body>
+</html>

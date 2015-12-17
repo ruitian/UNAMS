@@ -21,10 +21,8 @@ with app.app_context():
     db.app = app
     db.init_app(app)
 
-    '''
     from .admin import admin
     admin.init_app(app)
-    '''
 
     login_manager.setup_app(app)
     login_manager.session_protection = 'strong'
