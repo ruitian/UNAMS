@@ -23,3 +23,11 @@ def login():
             return redirect('/')
         flash(u'用户名或密码错误！')
     return render_template('auth/login.html', form=form)
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash(u'您已退出系统')
+    return redirect('/')
