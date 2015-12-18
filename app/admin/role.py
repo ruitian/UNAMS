@@ -18,6 +18,6 @@ class RoleAdmin(ModelViewMixin):
 
 admin.add_view(
     RoleAdmin(
-        db.session, category=u'角色管理', name=u'角色', url='role'
+        db.session, category=u'用户管理', name=u'角色列表', url='role'
     )
 )

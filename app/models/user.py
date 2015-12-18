@@ -37,6 +37,7 @@ class UserModel(UserMixin, db.Model):
         server_default=db.func.current_timestamp()
     )
     id_role = db.Column(db.Integer, db.ForeignKey('role.id'))
+    id_unit = db.Column(db.Integer, db.ForeignKey('unit.id'))
 
     @classmethod
     def model_form(cls):
