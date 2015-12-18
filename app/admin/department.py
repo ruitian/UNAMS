@@ -14,19 +14,17 @@ import xlrd
 ALLOWED_EXTENSIONS = set(['xls', 'xlsx'])
 
 
-labels = dict(
-    id='#',
-    unit_id='单位/学院编号',
-    unit_name='单位/学院名称'
-)
-
-
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 
 class UnitAdmin(ModelViewMixin):
+    labels = dict(
+        id='#',
+        unit_id='单位/学院编号',
+        unit_name='单位/学院名称'
+    )
     column_labels = labels
     column_list = ['unit_id', 'unit_name']
     can_edit = False
@@ -86,9 +84,34 @@ class UnitsAdmin(BaseViewMixin):
             else:
                 flash(u'文件类型错误!')
             return redirect(url_for('admin.index'))
+
+
+class MajorAdmin(ModelViewMixin):
+    labels = dict(
+        id='#',
+        major_id=u'专业编号',
+        major_name=u'专业名称',
+        unit=u'学院'
+    )
+    column_labels = labels
+    column_list = ['major_id', 'major_name', 'unit']
+    can_edit = False
+
+    def __init__(self, session, **kwargs):
+        super(MajorAdmin, self).__init__(MajorModel, session, **kwargs)
+
+    def scaffold_form(self):
+        form_class = super(MajorAdmin, self).scaffold_form()
+        return form_class
+
 admin.add_view(
     UnitAdmin(
         db.session, category=u'信息管理', name=u'院系列表', url='unit')
+)
+admin.add_view(
+    MajorAdmin(
+        db.session, category=u'信息管理', name=u'专业列表', url='major'
+    )
 )
 
 admin.add_view(UnitsAdmin(url='import_unit'))
