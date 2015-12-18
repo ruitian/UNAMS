@@ -77,8 +77,9 @@ class TeacherAdmin(BaseViewMixin):
                         unit_id = item[2].encode('utf-8')
                         unit_name = item[3].encode('utf-8')
                     except:
-                        flash(u'更新数据失败，错误数据为%行' % i)
-                        db.rollback
+                        flash(u'更新数据失败，错误数据为%s行' % i)
+                        db.session.rollback()
+                        break
                     teacher = UserModel.query.filter_by(
                         user_name=teacher_id, nick_name=teacher_name).first()
                     unit = UnitModel.query.filter_by(
@@ -102,7 +103,7 @@ class TeacherAdmin(BaseViewMixin):
                     db.session.commit()
                     flash(u'老师更新成功')
                 except:
-                    db.rollback()
+                    db.session.rollback()
                     flash(u'未知错误')
             else:
                 flash(u'文件格式错误!')

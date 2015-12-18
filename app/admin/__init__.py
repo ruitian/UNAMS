@@ -18,4 +18,5 @@ admin = Admin(name=u'大学生创新活动管理系统',
               base_template='admin/base.html',
               template_mode='admin')
 from . import user  # noqa
-from . import role
+from . import role  # noqa
+from . import department  # noqa
