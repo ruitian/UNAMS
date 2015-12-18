@@ -34,6 +34,7 @@ def deploy():
         u.user_name = 'admin'
         u.nick_name = 'admin'
         u.password = 'admin'
+        u.role = r
         db.session.add(u)
         db.session.commit()
     except Exception, e:
