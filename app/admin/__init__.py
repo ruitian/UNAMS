@@ -20,3 +20,4 @@ admin = Admin(name=u'大学生创新活动管理系统',
 from . import user  # noqa
 from . import role  # noqa
 from . import department  # noqa
+from . import competition  # noqa

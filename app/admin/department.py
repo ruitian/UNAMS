@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from .mixin import ModelViewMixin, BaseViewMixin
 from flask import redirect, request, url_for, flash, views
-from ..models import UnitModel, MajorModel
+from ..models import UnitModel, MajorModel, Grade
 from .. import app, db
 from . import admin
 from flask.ext.admin import expose_plugview
@@ -17,6 +17,16 @@ ALLOWED_EXTENSIONS = set(['xls', 'xlsx'])
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
+
+class GradeAdmin(ModelViewMixin):
+
+    def __init__(self, session, **kwargs):
+        super(GradeAdmin, self).__init__(Grade, session, **kwargs)
+
+    def scaffold_form(self):
+        form_class = super(GradeAdmin, self).scaffold_form()
+        return form_class
 
 
 class UnitAdmin(ModelViewMixin):
@@ -104,6 +114,11 @@ class MajorAdmin(ModelViewMixin):
         form_class = super(MajorAdmin, self).scaffold_form()
         return form_class
 
+admin.add_view(
+    GradeAdmin(
+        db.session, category=u'信息管理', name=u'年级管理', url='grade'
+    )
+)
 admin.add_view(
     UnitAdmin(
         db.session, category=u'信息管理', name=u'院系列表', url='unit')
