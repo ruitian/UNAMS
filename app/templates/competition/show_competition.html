@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="row content">
+  <div class="modal-header">
+    <h3>竞赛活动</h3>
+  </div>
+  <div class="col-md-12">
+    <h3>
+      竞赛信息
+    </h3>
+    <hr />
+    竞赛项目: {{competition.project}}
+    <br>
+    成果名称: {{competition.achievement_name}}
+    <br>
+    获奖级别: {{competition.winning_level}}
+    <br>
+    等级: {{competition.rate}}
+    <br>
+    获奖时间: {{competition.winning_time}}
+    <br>
+    获奖单位: {{competition.awards_unit}}
+    <br>
+    创建时间: {{competition.date_created}}
+    <h3>
+      参赛学生
+    </h3>
+    <hr />
+    {% for participant in competition.participants.all() %}
+    <h4>No. {{ participant.locant }}</h4>
+    {{ competition.participants.all()|length }}排{{ participant.locant }}
+      <br>
+      学号:
+      {{ participant.student.student_id }}
+      <br>
+      姓名:
+      {{ participant.student.student_name }}
+      <br>
+      年级:
+      {{ participant.student.grade }}
+      <br>
+      学院:
+      {{ participant.student.acachemy }}
+      <br>
+      专业:
+      {{ participant.student.major }}
+    {% endfor %}
+  </div>
+</div>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">添加学生</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">学生信息</h4>
+
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <input type="hidden" name="competition_id" value="8">
+            <label for="recipient-name" class="control-label">{{ student_form.student_id.label }}</label>
+            {{ student_form.student_id(class="form-control")}}
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">{{student_form.student_name.label}}</label>
+            {{ student_form.student_name(class="form-control")}}
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">{{student_form.id_grade.label}}</label>
+            {{student_form.id_grade(class="form-control")}}
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">{{student_form.id_acachemy.label}}</label>
+            <select name="" id="acachemy" class="form-control"></select>
+            {{student_form.id_acachemy(type="hidden", id="acachemy_hi")}}
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">{{student_form.id_major.label}}</label>
+            <select id="major" class="form-control" selected></select>
+            {{student_form.id_major(type="hidden", id="major_hi")}}
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消添加</button>
+        {{student_form.submit.label(class="btn btn-primary",id="student_info")}}
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+	$.getJSON('/department/_get', function(data) {
+		var opt = "";
+              var id_acachemy = "";
+		opt += "<option value=\"\" disabled selected>==选择学院==</option>";
+		for(var i=0; i<data.departments.length; i++) {
+			if(data.departments[i].acachemy_id != 0) {
+				opt += "<option value=\""  + data.departments[i].id + "\">" + data.departments[i].acachemy.acachemy_name + "</option>";
+			}
+		}
+		$("#acachemy").html(opt);
+		opt = "<option value=\"\" disabled selected>==选择专业==</option>";
+		$("#major").html(opt);
+
+		$("#acachemy").change(function() {
+			var id = 0;
+			id = $(this).val();
+			id = id - 1;
+			var opt = "";
+			for(var i=0; i<data.departments[id].majors.length; i++) {
+				opt += "<option value=\"" + data.departments[id].majors[i].major_id + "\">" + data.departments[id].majors[i].major_name + "</option>";
+			}
+                      id_major = data.departments[id].majors[0].major_id;
+                      $("#acachemy_hi").val(id);
+                      $("#major_hi").val(id_major);
+			$("#major").html(opt);
+		})
+              $("#major").change(function() {
+                $("#major_hi").val($(this).val());
+              })
+	})
+</script>
+
+<script type="text/javascript">
+        $(function() {
+          $("#student_info").click(function () {
+            $.ajax({
+                url: '/add_student',
+                type: 'POST',
+                data: $('form').serialize(),
+                success: window.location.reload()
+            });
+          })
+        })
+</script>
+{% endblock %}
