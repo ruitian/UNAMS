@@ -16,7 +16,7 @@ class UnitModel(db.Model):
         server_default=db.func.current_timestamp()
     )
     teachers = db.relationship('UserModel', backref='unit', lazy='dynamic')
-    major = db.relationship('MajorModel', backref='major', lazy='dynamic')
+    major = db.relationship('MajorModel', backref='unit', lazy='dynamic')
     students = db.relationship('Student', backref='unit', lazy='dynamic')
 
     def __repr__(self):
