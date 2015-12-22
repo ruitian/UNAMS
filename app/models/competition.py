@@ -3,6 +3,16 @@ from app import app, db
 from wtforms.ext.sqlalchemy.orm import model_form
 from wtforms import widgets, fields  # noqa
 
+
+competition_student = db.Table(
+    'competition_student',
+    db.Column('competition_id',
+              db.Integer,
+              db.ForeignKey('competition.id')),
+    db.Column('student_id',
+              db.Integer,
+              db.ForeignKey('student.id'))
+)
 '''竞赛项目'''
 
 
@@ -75,6 +85,11 @@ class Competition(db.Model):
     )
     project = db.relationship('Project', lazy=True)
 
+    students = db.relationship('Student',
+                               secondary=competition_student,
+                               backref=db.backref(
+                                   'students', lazy='dynamic'))
+
     participants = db.relationship(
         'Participant',
         foreign_keys=[Participant.id_competition],
@@ -107,3 +122,37 @@ class Competition(db.Model):
                 'rate': {'widget': widgets.Select()}
             }
         )
+
+
+class Student(db.Model):
+
+    '''学生信息表，字段包括：
+    学生ID，学生姓名，学生所在学院，学生专业，学生所在年级'''
+
+    __tablename__ = 'student'
+    id = db.Column(db.Integer, primary_key=True)
+    student_id = db.Column(db.String(128), nullable=False, unique=True)
+    student_name = db.Column(db.String(128), nullable=False)
+
+    id_grade = db.Column(db.Integer, db.ForeignKey('grade.id'))
+    id_acachemy = db.Column(db.Integer, db.ForeignKey('unit.id'))
+    id_major = db.Column(db.Integer, db.ForeignKey('major.id'))
+
+    competitions = db.relationship('Competition',
+                                   secondary=competition_student,
+                                   backref=db.backref(
+                                       'competitions', lazy='dynamic'))
+
+    @classmethod
+    def model_form(cls):
+        return model_form(
+            model=cls,
+            db_session=db.session
+        )
+
+    def __inti__(self, student_id, student_name):
+        self.student_id = student_id
+        self.student_name = student_name
+
+    def __repr__(self):
+        return self.student_id + '/' + self.student_name
