@@ -1,3 +1,21 @@
 .footer {
     text-align: center;
 }
+
+.competition-info img {
+	width: 500px;
+	height: 400px;
+}
+
+.student-info {
+	width: 200px;
+	height:  200px;
+	border: 1px solid #eee;
+	float:  left;
+	padding-left: 20px;
+}
+
+.certificate {
+	clear:  both;
+	padding-top:  20px;
+}
