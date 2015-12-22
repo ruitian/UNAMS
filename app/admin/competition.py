@@ -36,6 +36,7 @@ class ProjectAdmin(ModelViewMixin):
         form_class = super(ProjectAdmin, self).scaffold_form()
         return form_class
 
+
 class CompetitionAdmin(ModelViewMixin):
     labels = dict(
         id=u'#',
@@ -46,7 +47,7 @@ class CompetitionAdmin(ModelViewMixin):
         rate=u'等级',
         awards_unit=u'颁奖单位',
         winning_time=u'获奖时间',
-        student=u'学生',
+        students=u'学生',
         is_review=u'是否审核',
         participants=u'参赛学生',
         advisers=u'指导教师',
@@ -58,11 +59,14 @@ class CompetitionAdmin(ModelViewMixin):
     can_create = False
     can_edit = True
     can_delete = True
-    column_list = ('id', 'project', 'achievement_name', 'winning_level', 'rate',
-            'awards_unit', 'winning_time', 'is_review', 'date_created')
+    column_list = ('id', 'project', 'achievement_name',
+                   'winning_level', 'rate',
+                   'awards_unit', 'winning_time',
+                   'is_review', 'date_created')
 
-    column_filters = ['project', 'achievement_name', 'winning_level', 'rate',
-            'awards_unit', 'winning_time', 'is_review']
+    column_filters = ['project', 'achievement_name',
+                      'winning_level', 'rate',
+                      'awards_unit', 'winning_time', 'is_review']
 
     column_editable_list = ['is_review']
 
@@ -72,6 +76,7 @@ class CompetitionAdmin(ModelViewMixin):
     def scaffold_form(self):
         form_class = super(CompetitionAdmin, self).scaffold_form()
         return form_class
+
 
 class ImportProjectView(BaseViewMixin):
 
@@ -96,7 +101,8 @@ class ImportProjectView(BaseViewMixin):
                         flash(u'数据更新失败，错误数据为%s行' % i)
                         db.session.rollback()
                         break
-                    project = Project.query.filter_by(project_name=project_name).first()
+                    project = Project.query.filter_by(
+                        project_name=project_name).first()
                     if not project:
                         project = Project(project_name=project_name)
                         db.session.add(project)
@@ -113,7 +119,7 @@ class ImportProjectView(BaseViewMixin):
 admin.add_view(
     CompetitionAdmin(
         db.session, category=u'竞赛管理', name='竞赛列表'
-    )    
+    )
 )
 admin.add_view(
     ProjectAdmin(

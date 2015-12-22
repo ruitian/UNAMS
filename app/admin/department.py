@@ -104,7 +104,7 @@ class MajorAdmin(ModelViewMixin):
         unit=u'学院'
     )
     column_labels = labels
-    column_list = ['major_id', 'major_name', 'unit']
+    column_list = ['id', 'major_id', 'major_name', 'unit']
     can_edit = False
 
     def __init__(self, session, **kwargs):
