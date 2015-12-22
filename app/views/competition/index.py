@@ -12,13 +12,13 @@ from flask import(
 )
 from ... models import (
     UserModel,
-    Student,
     Grade,
     Project,
     Competition,
     Adviser,
     Participant,
     UnitModel,
+    Student,
     MajorModel
 )
 from flask.ext.login import login_required
@@ -29,6 +29,7 @@ import os
 
 
 ALLOWED_EXTENSIONS = set(['jpg'])
+UPLOAD_FOLDER = app.config['UPLOAD_FOLDER']
 
 
 def allowed_file(filename):
@@ -68,6 +69,14 @@ def show_competition(id):
                            student_form=student_form, id=id)
 
 
+@app.route('/uploads/competition/<int:id>')
+@login_required
+def uploaded_file(id):
+    competition = Competition.query.filter_by(id=id).first_or_404()
+    return send_from_directory(UPLOAD_FOLDER,
+                               'competition_%s.jpg' % competition.id)
+
+
 @app.route('/competition/<int:id>/participant', methods=['POST'])
 @login_required
 def participant(id):
@@ -89,18 +98,24 @@ def add_student():
     grade = Grade.query.filter_by(grade_name=id_grade).first()
     acachemy = UnitModel.query.filter_by(id=id_acachemy).first()
     major = MajorModel.query.filter_by(id=id_major).first()
-    print major
-    student = Student(
-        student_id=student_id,
-        student_name=student_name,
-        grade=grade,
-        unit=acachemy,
-        major=major
-    )
-    db.session.add(student)
-    try:
-        db.session.commit()
-    except:
-        flash(u'未知错误')
-        db.session.rollback()
+    competition = Competition.query.filter_by(id=id).first()
+    student = Student.query.filter_by(student_id=student_id).first()
+    if student is None:
+        student = Student(
+            student_id=student_id,
+            student_name=student_name,
+            grade=grade,
+            unit=acachemy,
+            major=major
+        )
+        db.session.add(student)
+        try:
+            db.session.commit()
+            student = Student.query.filter_by(student_id=student_id).first()
+        except:
+            flash(u'未知错误')
+            db.session.rollback()
+    competition = Competition.query.get(id)
+    competition.students.append(student)
+    db.session.commit()
     return redirect(url_for('show_competition', id=id))
