@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from .mixin import ModelViewMixin, BaseViewMixin
 from flask import redirect, request, url_for, flash, views
-from ..models import Project, Competition
+from ..models import Project, Competition, Student
 from .. import app, db
 from . import admin
 from flask.ext.admin import expose_plugview
@@ -59,6 +59,9 @@ class CompetitionAdmin(ModelViewMixin):
     can_create = False
     can_edit = True
     can_delete = True
+    can_view_details = True
+    create_modal = True
+    list_template = 'admin/competition_list.html'
     column_list = ('id', 'project', 'achievement_name',
                    'winning_level', 'rate',
                    'awards_unit', 'winning_time',

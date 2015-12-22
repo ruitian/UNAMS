@@ -4,7 +4,7 @@
   <div class="modal-header">
     <h3>竞赛活动</h3>
   </div>
-  <div class="col-md-12">
+  <div class="col-md-12 competition-info">
     <h3>
       竞赛信息
     </h3>
@@ -25,29 +25,36 @@
     <h3>
       参赛学生
     </h3>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">添加学生</button>
     <hr />
-    {% for participant in competition.participants.all() %}
-    <h4>No. {{ participant.locant }}</h4>
-    {{ competition.participants.all()|length }}排{{ participant.locant }}
+    {% for student in competition.students%}
+    <div class="student-info">
       <br>
       学号:
-      {{ participant.student.student_id }}
+      {{ student.student_id }}
       <br>
       姓名:
-      {{ participant.student.student_name }}
+      {{ student.student_name }}
       <br>
       年级:
-      {{ participant.student.grade }}
+      {{ student.grade }}
       <br>
       学院:
-      {{ participant.student.acachemy }}
+      {{ student.unit }}
       <br>
       专业:
-      {{ participant.student.major }}
-    {% endfor %}
+      {{ student.major.major_name }}
+    </div>
+     {% endfor %}
+    <div class="certificate">
+      <h3>
+      获奖证书
+      </h3>
+      <img src="{{ url_for('uploaded_file', id=competition.id) }}">
+    </div>
   </div>
 </div>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">添加学生</button>
+
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -59,7 +66,7 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <input type="hidden" name="competition_id" value="8">
+            <input type="hidden" name="competition_id" value="{{id}}">
             <label for="recipient-name" class="control-label">{{ student_form.student_id.label }}</label>
             {{ student_form.student_id(class="form-control")}}
           </div>
@@ -113,7 +120,7 @@
 				opt += "<option value=\"" + data.departments[id].majors[i].major_id + "\">" + data.departments[id].majors[i].major_name + "</option>";
 			}
                       id_major = data.departments[id].majors[0].major_id;
-                      $("#acachemy_hi").val(id);
+                      $("#acachemy_hi").val(id+1);
                       $("#major_hi").val(id_major);
 			$("#major").html(opt);
 		})
