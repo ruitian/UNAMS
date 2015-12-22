@@ -87,22 +87,10 @@ class Competition(db.Model):
 
     students = db.relationship('Student',
                                secondary=competition_student,
+                               single_parent=True,
                                backref=db.backref(
-                                   'students', lazy='dynamic'))
-
-    participants = db.relationship(
-        'Participant',
-        foreign_keys=[Participant.id_competition],
-        backref=db.backref('competition', lazy='joined'),
-        lazy='dynamic',
-        cascade='all, delete-orphan')
-
-    advisers = db.relationship(
-        'Adviser',
-        foreign_keys=[Adviser.id_competition],
-        backref=db.backref('competition', lazy='joined'),
-        lazy='dynamic',
-        cascade='all, delete-orphan')
+                                   'competitions', lazy='joined'),
+                               lazy='dynamic', cascade='all, delete-orphan')
 
     winning_level = db.Column(db.Enum(
         *app.config['COMPETITION_LEVEL'],
@@ -137,11 +125,6 @@ class Student(db.Model):
     id_grade = db.Column(db.Integer, db.ForeignKey('grade.id'))
     id_acachemy = db.Column(db.Integer, db.ForeignKey('unit.id'))
     id_major = db.Column(db.Integer, db.ForeignKey('major.id'))
-
-    competitions = db.relationship('Competition',
-                                   secondary=competition_student,
-                                   backref=db.backref(
-                                       'competitions', lazy='dynamic'))
 
     @classmethod
     def model_form(cls):
