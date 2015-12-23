@@ -2,6 +2,7 @@
 from app import app, db
 from wtforms.ext.sqlalchemy.orm import model_form
 from wtforms import widgets, fields  # noqa
+from .user import UserModel
 
 
 competition_student = db.Table(
@@ -12,6 +13,15 @@ competition_student = db.Table(
     db.Column('student_id',
               db.Integer,
               db.ForeignKey('student.id'))
+)
+competition_teacher = db.Table(
+    'competition_teacher',
+    db.Column('competition_id',
+              db.Integer,
+              db.ForeignKey('competition.id')),
+    db.Column('teacher_id',
+              db.Integer,
+              db.ForeignKey('user.id'))
 )
 '''竞赛项目'''
 
@@ -87,6 +97,12 @@ class Competition(db.Model):
 
     students = db.relationship('Student',
                                secondary=competition_student,
+                               single_parent=True,
+                               backref=db.backref(
+                                   'competitions', lazy='joined'),
+                               lazy='dynamic', cascade='all, delete-orphan')
+    teachers = db.relationship('UserModel',
+                               secondary=competition_teacher,
                                single_parent=True,
                                backref=db.backref(
                                    'competitions', lazy='joined'),
