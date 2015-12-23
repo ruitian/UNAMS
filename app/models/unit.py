@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from app import db
+from .user import UserModel
 
 '''
 单位/学院信息
@@ -23,6 +24,7 @@ class UnitModel(db.Model):
         return self.unit_name
 
     def department_to_json(self):
+        users = UserModel.query.all()
         return {
             'id': self.id,
             'acachemy': {
@@ -32,7 +34,11 @@ class UnitModel(db.Model):
             'majors': [{
                 'major_id': major.id,
                 'major_name': major.major_name
-            }for major in self.major]
+            }for major in self.major],
+            'teachers': [{
+                'teacher_id': teacher.user_name,
+                'teacher_name': teacher.nick_name
+            }for teacher in self.teachers]
         }
 
 
