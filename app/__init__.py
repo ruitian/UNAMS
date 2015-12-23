@@ -27,6 +27,7 @@ with app.app_context():
     login_manager.setup_app(app)
     login_manager.session_protection = 'strong'
     login_manager.login_view = 'login'
+    login_manager.login_message = u'请先登陆系统,若遗忘密码，请联系管理员'
     bootstrap.init_app(app)
 
 from views import *

@@ -37,6 +37,21 @@
             <li><a href="#">专利</a></li>
             <li><a href="#">作品</a></li>
           </ul>
+        <ul class="nav navbar-nav navbar-right">
+            {% if current_user.is_authenticated() %}
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">管理<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                {% if current_user.role.role_name == "管理员" %}
+                <li><a href="/admin"><i class="fa fa-user fa-fw"></i>后台管理</a></li>
+                {% endif %}
+                <li><a href="#">设置</a></li>
+                <li><a href="/logout">退出登陆</a></li>
+                <li role="separator" class="divider"></li>
+              </ul>
+            </li>
+            {% endif %}
+        </ul>
           <ul class="nav navbar-nav navbar-right">
               {% if current_user.is_authenticated() %}
               <li class="dropdown">
