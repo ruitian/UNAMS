@@ -119,3 +119,15 @@ def add_student():
     competition.students.append(student)
     db.session.commit()
     return redirect(url_for('show_competition', id=id))
+
+
+@app.route('/add_teacher', methods=['POST'])
+@login_required
+def add_teacher():
+    teacher_id = request.form['teacher_id']
+    id = request.form['competition_id']
+    teacher = UserModel.query.filter_by(user_name=teacher_id).first()
+    competition = Competition.query.get(id)
+    competition.teachers.append(teacher)
+    db.session.commit()
+    return redirect(url_for('show_competition', id=id))
