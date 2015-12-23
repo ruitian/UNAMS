@@ -4,7 +4,6 @@ from app import db, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask.ext.login import UserMixin, AnonymousUserMixin
 from .permission import Permission
-from .competition import Adviser
 from wtforms.ext.sqlalchemy.orm import model_form
 
 
@@ -39,12 +38,6 @@ class UserModel(UserMixin, db.Model):
     )
     id_role = db.Column(db.Integer, db.ForeignKey('role.id'))
     id_unit = db.Column(db.Integer, db.ForeignKey('unit.id'))
-    competitions = db.relationship('Adviser',
-                                   foreign_keys=[Adviser.id_teacher],
-                                   backref=db.backref('teacher',
-                                                      lazy='joined'),
-                                   lazy='dynamic',
-                                   cascade='all, delete-orphan')
 
     @classmethod
     def model_form(cls):
