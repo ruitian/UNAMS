@@ -35,7 +35,7 @@ class UserAdmin(ModelViewMixin):
     can_edit = True
     can_delete = True
 
-    column_searchable_list = ['user_name']
+    column_searchable_list = ['user_name', 'nick_name']
     column_editable_list = ['nick_name']
     column_list = ('id', 'user_name',
                    'nick_name', 'unit', 'role', 'date_created')
@@ -64,24 +64,19 @@ class TeacherAdmin(BaseViewMixin):
                 print file_url
                 file.save(file_url)
                 bk = xlrd.open_workbook(file_url)
-                shxrange = range(bk.nsheets)
-                sh = bk.sheet_by_name("Sheet1")
-                row_list = []
+                sh = bk.sheets()[0]
                 for i in range(1, sh.nrows):
-                    row_data = sh.row_values(i)
-                    row_list.append(row_data)
-                for item in row_list:
                     try:
-                        teacher_id = item[0].encode('utf-8')
-                        teacher_name = item[1].encode('utf-8')
-                        unit_id = item[2].encode('utf-8')
-                        unit_name = item[3].encode('utf-8')
+                        teacher_id = sh.row(i)[0].value.encode('utf-8')
+                        teacher_name = sh.row(i)[1].value.encode('utf-8')
+                        unit_id = int(sh.row(i)[2].value.encode('utf-8'))
+                        unit_name = sh.row(i)[3].value.encode('utf-8')
                     except:
                         flash(u'更新数据失败，错误数据为%s行' % i)
-                        db.session.rollback()
                         break
                     teacher = UserModel.query.filter_by(
-                        user_name=teacher_id, nick_name=teacher_name).first()
+                        user_name=teacher_id,
+                        nick_name=teacher_name).first()
                     unit = UnitModel.query.filter_by(
                         unit_id=unit_id).first()
 
@@ -95,7 +90,8 @@ class TeacherAdmin(BaseViewMixin):
                         teacher.user_name = teacher_id
                         teacher.nick_name = teacher_name
                         teacher.role = \
-                            RoleModel.query.filter_by(role_name=u'教师').first()
+                            RoleModel.query.filter_by(
+                                role_name=u'教师').first()
                         teacher.password = app.config['DEFAULT_PASSWORD']
                         teacher.unit = unit
                         db.session.add(teacher)
