@@ -3,29 +3,28 @@
 }
 
 .competition-info img {
-	width: 500px;
-	height: 400px;
-}
-
-.student {
 	width: 100%;
 	height: auto;
-	margin-top: 20px;
 }
+
 .student-info {
-	width: 250px;
-	height:  200px;
-	border: 1px solid #eee;
-	float:  left;
-	padding-left: 20px;
+	height:  250px;
+	border: 1px dashed #eee;
+    padding: 20px 20px;
+    margin-top: 10px;
 }
 
 .certificate {
-	clear:  both;
 	padding-top:  20px;
 }
 
 .teacher {
-	clear:  both;
 	padding-top: 20px;
+}
+
+.teacher-info {
+    height:  200px;
+    border: 1px dashed #eee;
+    padding: 20px 20px;
+    margin-top: 10px;
 }
