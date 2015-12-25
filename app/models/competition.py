@@ -100,13 +100,13 @@ class Competition(db.Model):
                                single_parent=True,
                                backref=db.backref(
                                    'competitions', lazy='joined'),
-                               lazy='dynamic', cascade='all, delete-orphan')
+                               lazy='dynamic')
     teachers = db.relationship('UserModel',
                                secondary=competition_teacher,
                                single_parent=True,
                                backref=db.backref(
                                    'competitions', lazy='joined'),
-                               lazy='dynamic', cascade='all, delete-orphan')
+                               lazy='dynamic')
 
     winning_level = db.Column(db.Enum(
         *app.config['COMPETITION_LEVEL'],

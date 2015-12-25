@@ -38,7 +38,7 @@ def delTeacher():
     competition = Competition.query.get(id)
     teacher = UserModel.query.filter_by(user_name=teacher_id).first()
     print teacher.id
-    db.session.delete(teacher)
+    competition.teachers.remove(teacher)
     db.session.commit()
     return redirect(url_for('show_competition', id=id))
 
