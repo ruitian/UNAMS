@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block model %}
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">学生信息</h4>
+            </div>
+            <div class="modal-body">
+                <form id="student_form">
+                    <div class="form-group">
+                        <input type="hidden" id="competition_id" name="competition_id" value="{{id}}">
+                        <label for="recipient-name" class="control-label">{{ student_form.student_id.label }}</label>
+                        {{ student_form.student_id(class="form-control")}}
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">{{student_form.student_name.label}}</label>
+                        {{ student_form.student_name(class="form-control")}}
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">{{student_form.id_grade.label}}</label>
+                        {{student_form.id_grade(class="form-control")}}
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">{{student_form.id_acachemy.label}}</label>
+                        <select name="" id="acachemy" class="form-control"></select>
+                        {{student_form.id_acachemy(type="hidden", id="acachemy_hi")}}
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">{{student_form.id_major.label}}</label>
+                        <select id="major" class="form-control" selected></select>
+                        {{student_form.id_major(type="hidden", id="major_hi")}}
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消添加</button>
+                {{student_form.submit.label(class="btn btn-primary",id="student_info")}}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="teacherModal" tabindex="-1" role="dialog" aria-labelledby="teacherModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="teacherModalLabel">教师信息</h4>
+            </div>
+            <div class="modal-body">
+                <form id="teacher_form">
+                    <div class="form-group">
+                        <input type="hidden" name="competition_id" value="{{id}}">
+                        <label for="recipient-name" class="control-label">所在单位</label>
+                        <select name="" id="teacher_acachemy" class="form-control"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">教师编号</label>
+                        <input type="text" id="teacher_id" class="form-control" list="teacher" name="teacher_id"/>
+                        <datalist id="teacher"></datalist>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">姓名</label>
+                        <input type="text" id="teacher_name" class="form-control"/>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消添加</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="teacher_info">确认添加</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="editModalLabel">学生信息</h4>
+            </div>
+            <div class="modal-body">
+                <form id="edit_student_form">
+                    <div class="form-group">
+                        <input type="hidden" id="edit_competition_id" name="competition_id" value="{{id}}">
+                        <label for="recipient-name" class="control-label">{{ student_form.student_id.label }}</label>
+                        <input type="text" class="form-control" id="edit_student_id" name="student_id"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">{{student_form.student_name.label}}</label>
+                        <input type="text" class="form-control" id="edit_student_name" name="student_name"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">{{student_form.id_grade.label}}</label>
+                        <select name="" id="edit_student_grade" class="form-control"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">{{student_form.id_acachemy.label}}</label>
+                        <select name="" id="edit_student_acachemy" class="form-control"></select>
+                        <input type="hidden" class="form-control" id="edit_student_acachemy_hi"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">{{student_form.id_major.label}}</label>
+                        <select id="edit_student_major" class="form-control" selected></select>
+                        <input type="hidden" class="form-control" id="edit_student_major_hi"/>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消更新</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">确认提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

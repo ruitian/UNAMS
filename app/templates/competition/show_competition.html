@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "competition/competition_model.html" %}
 {% block page_content %}
 <div class="row content">
     <div class="modal-header">
@@ -86,8 +86,10 @@
                         专业:
                         {{ student.major.major_name }}
                         <hr/>
-                        <button type="button" class="btn btn-link">
-                            <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>
+                        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#editModal" data-whatever="@mdo">
+                            <span aria-hidden="true" class="glyphicon glyphicon-pencil" onclick="editStudent()"
+                            data_id="{{student.student_id}}" data_name="{{student.student_name}}" data_grade="{{student.grade}}"
+                            data_acachemy="{{student.unit.unit_id}}" data_major="{{student.major.id}}"></span>
                         </button>
                         <button type="button" class="btn btn-link">
                             <span aria-hidden="true" data="{{student.student_id}}" class="glyphicon glyphicon-remove" onclick="delStudent()"></span>
@@ -99,204 +101,7 @@
         </div>
     </div>
 </div>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">学生信息</h4>
-            </div>
-            <div class="modal-body">
-                <form id="student_form">
-                    <div class="form-group">
-                        <input type="hidden" id="competition_id" name="competition_id" value="{{id}}">
-                        <label for="recipient-name" class="control-label">{{ student_form.student_id.label }}</label>
-                        {{ student_form.student_id(class="form-control")}}
-                    </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="control-label">{{student_form.student_name.label}}</label>
-                        {{ student_form.student_name(class="form-control")}}
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="control-label">{{student_form.id_grade.label}}</label>
-                        {{student_form.id_grade(class="form-control")}}
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="control-label">{{student_form.id_acachemy.label}}</label>
-                        <select name="" id="acachemy" class="form-control"></select>
-                        {{student_form.id_acachemy(type="hidden", id="acachemy_hi")}}
-                    </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="control-label">{{student_form.id_major.label}}</label>
-                        <select id="major" class="form-control" selected></select>
-                        {{student_form.id_major(type="hidden", id="major_hi")}}
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消添加</button>
-                {{student_form.submit.label(class="btn btn-primary",id="student_info")}}
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="teacherModal" tabindex="-1" role="dialog" aria-labelledby="teacherModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="teacherModalLabel">教师信息</h4>
-            </div>
-            <div class="modal-body">
-                <form id="teacher_form">
-                    <div class="form-group">
-                        <input type="hidden" name="competition_id" value="{{id}}">
-                        <label for="recipient-name" class="control-label">所在单位</label>
-                        <select name="" id="teacher_acachemy" class="form-control"></select>
-                    </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="control-label">教师编号</label>
-                        <input type="text" id="teacher_id" class="form-control" list="teacher" name="teacher_id"/>
-                        <datalist id="teacher"></datalist>
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="control-label">姓名</label>
-                        <input type="text" id="teacher_name" class="form-control"/>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消添加</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal" id="teacher_info">确认添加</button>
-            </div>
-        </div>
-    </div>
-</div>
-<script type="text/javascript">
-    $.getJSON('/department/_get', function(data) {
-        var opt = "";
-        var id_acachemy = "";
-        opt += "<option value=\"\" disabled selected>==选择学院==</option>";
-        for(var i=0; i<data.departments.length; i++) {
-            if(data.departments[i].acachemy_id != 0) {
-                opt += "<option value=\""  + data.departments[i].id + "\">" + data.departments[i].acachemy.acachemy_name + "</option>";
-            }
-        }
-        $("#acachemy").html(opt);
-        opt = "<option value=\"\" disabled selected>==选择专业==</option>";
-        $("#major").html(opt);
-
-        $("#acachemy").change(function() {
-            var id = 0;
-            id = $(this).val();
-            id = id - 1;
-            var opt = "";
-            for(var i=0; i<data.departments[id].majors.length; i++) {
-                opt += "<option value=\"" + data.departments[id].majors[i].major_id + "\">" + data.departments[id].majors[i].major_name + "</option>";
-            }
-            id_major = data.departments[id].majors[0].major_id;
-            $("#acachemy_hi").val(id+1);
-            $("#major_hi").val(id_major);
-            $("#major").html(opt);
-        })
-        $("#major").change(function() {
-            $("#major_hi").val($(this).val());
-        })
-    })
-</script>
-<script>
-    $.getJSON('/department/_get', function(data) {
-        var opt = "";
-        var id_acachemy = "";
-        opt += "<option value=\"\" disabled selected>==选择单位==</option>";
-        for(var i=0; i<data.departments.length; i++) {
-            if(data.departments[i].acachemy_id != 0) {
-                opt += "<option value=\""  + data.departments[i].id + "\">" + data.departments[i].acachemy.acachemy_name + "</option>";
-            }
-        }
-        $("#teacher_acachemy").html(opt);
-        $("#teacher_acachemy").change(function () {
-            var id = $(this).val();
-            id = id -1;
-            opt = "";
-            for(var i=0; i<data.departments[id].teachers.length; i++) {
-                opt += "<option value=\"" + data.departments[id].teachers[i].teacher_id + "\">";
-            }
-            $("#teacher").html(opt);
-        })
-    })
-</script>
-<script>
-    function immediately(){
-        var element = document.getElementById("teacher_id");
-        if("\v"=="v") {
-            element.onpropertychange = webChange;
-        }else{
-            element.addEventListener("input",webChange,false);
-        }
-        function webChange() {
-            var student_id = element.value;
-            if (student_id.length >= 5){
-                $.getJSON('/competition/_get_teacher', {id: student_id}, function (data) {
-                    document.getElementById("teacher_name").value=data.teacher_name;
-                })
-            }
-        }
-    }
-    immediately();
-</script>
-
-<script type="text/javascript">
-    $(function() {
-        $("#student_info").click(function () {
-            $.ajax({
-                url: '/add_student',
-                type: 'POST',
-                data: $('#student_form').serialize(),
-                success: window.location.reload()
-            });
-          })
-        })
-</script>
-<script type="text/javascript">
-    $(function() {
-        $("#teacher_info").click(function () {
-            $.ajax({
-                url: '/add_teacher',
-                type: 'POST',
-                data: $('#teacher_form').serialize(),
-                success: window.location.reload()
-            });
-        })
-    })
-</script>
-
-<script>
-    var competition_id = document.getElementById("competition_id").value;
-    function delTeacher() {
-        var teacher_id = event.target.getAttribute('data');
-        $.ajax({
-            url: '/competition/_del_teacher',
-            data: {
-                id: competition_id,
-                teacher_id: teacher_id
-            },
-            success: window.location.reload()
-        })
-    }
-
-    function delStudent() {
-        var student_id = event.target.getAttribute('data');
-        $.ajax({
-            url: '/competition/_del_student',
-            data: {
-                id: competition_id,
-                student_id: student_id
-            },
-            success: window.location.reload()
-        })
-    }
-</script>
+{% endblock %}
+{% block competition_script %}
+<script src="{{ url_for('static', filename='js/competition.js') }}"></script>
 {% endblock %}
