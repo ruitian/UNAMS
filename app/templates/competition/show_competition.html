@@ -41,18 +41,18 @@
                 </h3>
                 <hr />
                 {% for teacher in competition.teachers%}
-                <div class="col-sm-4">
-                    <div class="student-info">
-                        <br>
-                        学号:
-                        {{ teacher.user_name }}
-                        <br>
-                        姓名:
-                        {{ teacher.nick_name }}
-                        <br>
-                        单位:
-                        {{ teacher.unit }}
-                        <br>
+                <div class="col-xs-4">
+                    <div class="teacher-info">
+                        <b>编号:</b>
+                        <b>{{ teacher.user_name }}</b><br/>
+                        <b>姓名:</b>
+                        <b>{{ teacher.nick_name }}</b><br/>
+                        <b>单位:</b>
+                        <b>{{ teacher.unit }}</b><br/>
+                        <hr/>
+                        <button type="button" class="btn btn-link">
+                            <span aria-hidden="true" data="{{teacher.user_name}}" class="glyphicon glyphicon-remove" onclick="delTeacher()"></span>
+                        </button>
                     </div>
                 </div>
                 {% endfor %}
@@ -68,7 +68,7 @@
 
                 <hr />
                 {% for student in competition.students%}
-                <div class="row col-sm-4">
+                <div class="col-xs-4">
                     <div class="student-info">
                         <br>
                         学号:
@@ -85,6 +85,13 @@
                         <br>
                         专业:
                         {{ student.major.major_name }}
+                        <hr/>
+                        <button type="button" class="btn btn-link">
+                            <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                        <button type="button" class="btn btn-link">
+                            <span aria-hidden="true" data="{{student.student_id}}" class="glyphicon glyphicon-remove" onclick="delStudent()"></span>
+                        </button>
                     </div>
                 </div>
                 {% endfor %}
@@ -103,7 +110,7 @@
             <div class="modal-body">
                 <form id="student_form">
                     <div class="form-group">
-                        <input type="hidden" name="competition_id" value="{{id}}">
+                        <input type="hidden" id="competition_id" name="competition_id" value="{{id}}">
                         <label for="recipient-name" class="control-label">{{ student_form.student_id.label }}</label>
                         {{ student_form.student_id(class="form-control")}}
                     </div>
@@ -166,7 +173,7 @@
             </div>
         </div>
     </div>
-</div>s
+</div>
 <script type="text/javascript">
     $.getJSON('/department/_get', function(data) {
         var opt = "";
@@ -264,5 +271,32 @@
             });
         })
     })
+</script>
+
+<script>
+    var competition_id = document.getElementById("competition_id").value;
+    function delTeacher() {
+        var teacher_id = event.target.getAttribute('data');
+        $.ajax({
+            url: '/competition/_del_teacher',
+            data: {
+                id: competition_id,
+                teacher_id: teacher_id
+            },
+            success: window.location.reload()
+        })
+    }
+
+    function delStudent() {
+        var student_id = event.target.getAttribute('data');
+        $.ajax({
+            url: '/competition/_del_student',
+            data: {
+                id: competition_id,
+                student_id: student_id
+            },
+            success: window.location.reload()
+        })
+    }
 </script>
 {% endblock %}

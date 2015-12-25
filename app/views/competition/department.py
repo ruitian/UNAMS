@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
-from ... models import UnitModel, UserModel
-from flask import request, jsonify
+from ... models import (
+    UnitModel,
+    UserModel,
+    Competition,
+    Student)
+from flask import request, jsonify, redirect, url_for
 from flask.ext.login import login_required
 
 import json
@@ -24,3 +28,28 @@ def getTeacher():
     return jsonify({
         'teacher_name': teachers.nick_name
     })
+
+
+@app.route('/competition/_del_teacher')
+@login_required
+def delTeacher():
+    id = request.args.get('id')
+    teacher_id = request.args.get('teacher_id')
+    competition = Competition.query.get(id)
+    teacher = UserModel.query.filter_by(user_name=teacher_id).first()
+    print teacher.id
+    db.session.delete(teacher)
+    db.session.commit()
+    return redirect(url_for('show_competition', id=id))
+
+
+@app.route('/competition/_del_student')
+@login_required
+def delStudent():
+    id = request.args.get('id')
+    student_id = request.args.get('student_id')
+    competition = Competition.query.get(id)
+    student = Student.query.filter_by(student_id=student_id).first()
+    competition.students.remove(student)
+    db.session.commit()
+    return redirect(url_for('show_competition', id=id))
