@@ -19,3 +19,10 @@ class Grade(db.Model):
 
     def __repr__(self):
         return self.grade_name
+
+    def grade_to_json(self):
+        grades = Grade.query.all()
+        return {
+            'id': self.id,
+            'grade': self.grade_name
+        }

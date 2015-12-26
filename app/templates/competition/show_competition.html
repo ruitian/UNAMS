@@ -4,96 +4,95 @@
     <div class="modal-header">
         <h3>竞赛活动</h3>
     </div>
-    <div class="col-md-12 competition-info">
+    <div class="col-md-12 competition-info" style="margin-top: 20px;">
         <div class="row col-sm-4">
-            <h3>
-                竞赛信息
-            </h3>
-            <hr />
-            竞赛项目: {{competition.project}}
-            <br>
-            成果名称: {{competition.achievement_name}}
-            <br>
-            获奖级别: {{competition.winning_level}}
-            <br>
-            等级: {{competition.rate}}
-            <br>
-            获奖时间: {{competition.winning_time}}
-            <br>
-            获奖单位: {{competition.awards_unit}}
-            <br>
-            创建时间: {{competition.date_created}}
-
+            <div class="jumbotron" style="padding: 20px;">
+                <h4>
+                    竞赛信息
+                </h4>
+                <hr />
+                竞赛项目: {{competition.project}}
+                <br>
+                成果名称: {{competition.achievement_name}}
+                <br>
+                获奖级别: {{competition.winning_level}}
+                <br>
+                等级: {{competition.rate}}
+                <br>
+                获奖时间: {{competition.winning_time}}
+                <br>
+                获奖单位: {{competition.awards_unit}}
+                <br>
+                创建时间: {{competition.date_created}}
+            </div>
             <div class="certificate">
-                <h3>
+                <h4>
                     获奖证书
-                </h3>
+                </h4>
                 <img src="{{ url_for('uploaded_file', id=competition.id) }}">
             </div>
         </div>
         <div class="col-sm-7 col-sm-offset-1">
+            <h4>
+                指导教师
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#teacherModal" data-whatever="@mdo">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
+                </button>
+            </h4>
             <div class="row">
-                <h3>
-                    指导教师
-                    <button type="button" class="btn btn-dafault" data-toggle="modal" data-target="#teacherModal" data-whatever="@mdo">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    </button>
-                </h3>
-                <hr />
                 {% for teacher in competition.teachers%}
                 <div class="col-xs-4">
                     <div class="teacher-info">
-                        <b>编号:</b>
-                        <b>{{ teacher.user_name }}</b><br/>
-                        <b>姓名:</b>
-                        <b>{{ teacher.nick_name }}</b><br/>
-                        <b>单位:</b>
-                        <b>{{ teacher.unit }}</b><br/>
-                        <hr/>
-                        <button type="button" class="btn btn-link">
-                            <span aria-hidden="true" data="{{teacher.user_name}}" class="glyphicon glyphicon-remove" onclick="delTeacher()"></span>
-                        </button>
+                        <p>编号:<b>{{ teacher.user_name }}</b></p>
+                        <p>姓名:<b>{{ teacher.nick_name }}</b></p>
+                        <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">单位:<b>{{ teacher.unit }}</b></p>
+                        <hr style="margin-bottom: 5px;">
+                        <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                            <button type="button" class="btn btn-link">
+                                <span class="glyphicon glyphicon-remove" data="{{teacher.user_name}}" aria-hidden="true" onclick="delTeacher()"></span>&nbsp;
+                            </button>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
             <hr/>
+            <h4>
+                参赛学生
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+            </h4>
             <div class="row">
-                <h3>
-                    参赛学生
-                    <button type="button" class="btn btn-dafault" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    </button>
-                </h3>
-
-                <hr />
                 {% for student in competition.students%}
                 <div class="col-xs-4">
                     <div class="student-info">
-                        <br>
-                        学号:
-                        {{ student.student_id }}
-                        <br>
-                        姓名:
-                        {{ student.student_name }}
-                        <br>
-                        年级:
-                        {{ student.grade }}
-                        <br>
-                        学院:
-                        {{ student.unit }}
-                        <br>
-                        专业:
-                        {{ student.major.major_name }}
-                        <hr/>
-                        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#editModal" data-whatever="@mdo">
-                            <span aria-hidden="true" class="glyphicon glyphicon-pencil" onclick="editStudent()"
-                            data_id="{{student.student_id}}" data_name="{{student.student_name}}" data_grade="{{student.grade}}"
-                            data_acachemy="{{student.unit.unit_id}}" data_major="{{student.major.id}}"></span>
-                        </button>
-                        <button type="button" class="btn btn-link">
-                            <span aria-hidden="true" data="{{student.student_id}}" class="glyphicon glyphicon-remove" onclick="delStudent()"></span>
-                        </button>
+                        <p>
+                            学号:<b>{{ student.student_id }}</b>
+                        </p>
+                        <p>
+                            姓名:<b>{{ student.student_name }}</b>
+                        </p>
+                        <p>
+                            年级:<b>{{ student.grade }}</b>
+                        </p>
+                        <p  style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            学院:<b>{{ student.unit }}</b>
+                        </p>
+                        <p  style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            专业:<b>{{ student.major.major_name }}</b>
+                        </p>
+                        <hr style="margin-bottom: 5px;">
+                        <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                            <button type="button" class="btn btn-link">
+                                <span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editModal" data-whatever="@mdo" aria-hidden="true" onclick="editStudent()"
+                                      data_id="{{student.student_id}}" data_name="{{student.student_name}}" data_grade="{{student.grade}}"
+                                      data_acachemy="{{student.unit.unit_id}}" data_major="{{student.major.id}}"></span>&nbsp;
+                            </button>
+                            <button type="button" class="btn btn-link">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true" data="{{student.student_id}}" onclick="delStudent()"></span>&nbsp;
+                            </button>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
