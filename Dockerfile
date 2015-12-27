@@ -1,4 +1,11 @@
-FROM ubuntu:14.04
-MATAINTER baron
+FROM python:2.7.8
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+COPY . /usr/src/app
+
 RUN pip install -r requirements.txt
-RUN python manage.py runserver
+
+EXPOSE 3000
+
+CMD [ "python","application.py" ]
