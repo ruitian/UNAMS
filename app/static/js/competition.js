@@ -32,9 +32,25 @@ function get_acachemy_major(id_aca, id_maj, aca_hi, maj_hi) {
     })
 }
 
+function getGrade(grade1, grade2, grade) {
+    $.getJSON('/competition/_get_grade', function(data) {
+        console.log(data.grades[1].grade);
+        var opt = "";
+        opt += "<option value=\"\" disabled selected>" + grade + "</option>";
+        for(var i=0;i<data.grades.length;i++) {
+            opt += "<option value=\""  + data.grades[i].grade + "\">" + data.grades[i].grade + "</option>";
+        }
+        $(grade1).html(opt);
+
+        $(grade1).change(function() {
+            var grade_id = $(this).val();
+            $(grade2).val(grade_id);
+        })
+    })
+}
 
 get_acachemy_major("#acachemy", "#major", "#acachemy_hi", "#major_hi");
-
+getGrade("#grade", "#grade_init", "==选择年级==");
 // 老师部分获取单位信息
 $.getJSON('/department/_get', function(data) {
     var opt = "";
@@ -125,6 +141,7 @@ function delStudent() {
     })
 }
 
+
 function editStudent() {
     var student_id = event.target.getAttribute('data_id');
     var student_name = event.target.getAttribute('data_name');
@@ -137,20 +154,8 @@ function editStudent() {
     $('#student_grade').val(grade);
     $('#edit_student_acachemy_hi').val(acachemy_id);
     $('#edit_student_major_hi').val(major_id);
-    $.getJSON('/competition/_get_grade', function(data) {
-        console.log(data.grades[1].grade);
-        var opt = "";
-        opt += "<option value=\"\" disabled selected>" + grade + "</option>";
-        for(var i=0;i<data.grades.length;i++) {
-            opt += "<option value=\""  + data.grades[i].grade + "\">" + data.grades[i].grade + "</option>";
-        }
-        $("#edit_student_grade").html(opt);
 
-        $("#edit_student_grade").change(function() {
-            var grade_id = $(this).val();
-            $("#student_grade").val(grade_id);
-        })
-    })
+    getGrade("#edit_student_grade", "#student_grade", grade);
     get_acachemy_major("#edit_student_acachemy", "#edit_student_major", "#edit_student_acachemy_hi", "#edit_student_major_hi");
 }
 
