@@ -131,17 +131,36 @@ function editStudent() {
     var grade = event.target.getAttribute('data_grade');
     var acachemy_id = event.target.getAttribute('data_acachemy');
     var major_id = event.target.getAttribute('data_major');
-    document.getElementById("edit_student_id").value = student_id;
-    document.getElementById('edit_student_name').value = student_name;
-    document.getElementById('edit_student_grade').value = grade;
+    $('#student_old_id').val(student_id);
+    $('#edit_student_id').val(student_id);
+    $('#edit_student_name').val(student_name);
+    $('#student_grade').val(grade);
+    $('#edit_student_acachemy_hi').val(acachemy_id);
+    $('#edit_student_major_hi').val(major_id);
     $.getJSON('/competition/_get_grade', function(data) {
         console.log(data.grades[1].grade);
         var opt = "";
         opt += "<option value=\"\" disabled selected>" + grade + "</option>";
         for(var i=0;i<data.grades.length;i++) {
-            opt += "<option value=\""  + data.grades[i].id + "\">" + data.grades[i].grade + "</option>";
+            opt += "<option value=\""  + data.grades[i].grade + "\">" + data.grades[i].grade + "</option>";
         }
         $("#edit_student_grade").html(opt);
+
+        $("#edit_student_grade").change(function() {
+            var grade_id = $(this).val();
+            $("#student_grade").val(grade_id);
+        })
     })
     get_acachemy_major("#edit_student_acachemy", "#edit_student_major", "#edit_student_acachemy_hi", "#edit_student_major_hi");
 }
+
+$(function () {
+    $("#edit_student").click(function () {
+        $.ajax({
+            url: '/competition/_edit_student',
+            type: 'POST',
+            data: $('#edit_student_form').serialize(),
+            success: window.location.reload()
+        });
+    })
+})
