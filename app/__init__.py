@@ -10,7 +10,6 @@ import os
 app = Flask(__name__)
 db = SQLAlchemy()
 login_manager = LoginManager()
-db = SQLAlchemy()
 bootstrap = Bootstrap()
 
 with app.app_context():
