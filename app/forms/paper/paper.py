@@ -11,5 +11,7 @@ class PaperForm(Form):
     periodical = StringField(u'刊物名称', validators=[Required()])
     public = StringField(u'发表时间', validators=[Required()])
     student_name = StringField(u'作者', validators=[Required()])
-    academy = StringField(u'学院', validators=[Required()])
+    acachemy = StringField(u'学院', validators=[Required()])
     grade = StringField(u'班级', validators=[Required()])
+    level = StringField(u'档次', validators=[Required()])
+    submit = SubmitField(u'提交信息')
