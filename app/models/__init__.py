@@ -4,3 +4,4 @@ from .user import *  # noqa
 from .unit import *  # noqa
 from .grade import *
 from .competition import *
+from .paper import *  # noqa
