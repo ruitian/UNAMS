@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from ...forms import PaperForm
-from app import app
+from ...models import PaperModel
+from app import app, db
 from flask.ext.login import login_required
 from flask import render_template, request, redirect
 
@@ -11,6 +12,17 @@ def paper():
     form = PaperForm()
     if request.method == 'POST' and form.validate_on_submit:
         title = form.public.data
-        print title
+        paper = PaperModel(
+            paper_title=form.paper_title.data,
+            periodical=form.periodical.data,
+            level=form.level.data,
+            precedence=form.precedence.data,
+            issn=form.issn.data,
+            student_name=form.student_name.data,
+            student_class=form.grade.data,
+            public=form.public.data
+        )
+        db.session.add(paper)
+        db.session.commit()
         return redirect('/')
     return render_template('paper/paper.html', form=form)
