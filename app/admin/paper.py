@@ -8,15 +8,15 @@ from . import admin
 
 class PaperAdmin(ModelViewMixin):
     column_list = [
-        'id',
-        'paper_title',
-        'level',
-        'issn',
-        'periodical',
-        'precedence',
-        'student_class',
         'student_name',
-        'public'
+        'acachemy',
+        'student_class',
+        'paper_title',
+        'periodical',
+        'issn',
+        'public',
+        'level',
+        'precedence'
     ]
 
     labels = dict(
@@ -26,9 +26,10 @@ class PaperAdmin(ModelViewMixin):
         issn=u'刊号',
         student_class=u'班级',
         student_name=u'作者',
-        level=u'档次',
+        level=u'论文级别',
         precedence=u'位次',
-        public=u'发表时间'
+        public=u'发表时间',
+        acachemy=u'所属学院'
     )
 
     column_labels = labels
