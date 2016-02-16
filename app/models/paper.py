@@ -13,6 +13,7 @@ class PaperModel(db.Model):
     issn = db.Column(db.String(128))
     student_name = db.Column(db.String(64))
     student_class = db.Column(db.String(64))
+    acachemy = db.Column(db.String(64))
     public = db.Column(db.Date, nullable=False)
 
     def __repr__(self):
