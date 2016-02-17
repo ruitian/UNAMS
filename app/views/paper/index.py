@@ -20,6 +20,7 @@ def paper():
             issn=form.issn.data,
             student_name=form.student_name.data,
             student_class=form.grade.data,
+            acachemy=form.acachemy.data,
             public=form.public.data
         )
         db.session.add(paper)

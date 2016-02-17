@@ -8,11 +8,29 @@ from . import admin
 
 class PatentAdmin(ModelViewMixin):
     column_list = [
-        'id'
+        'id',
+        'category',
+        'student_name',
+        'student_class',
+        'precedence',
+        'teacher_name',
+        'patent_number',
+        'certificate',
+        'public',
+        'acachemy'
     ]
 
     labels = dict(
         id=u'序号',
+        category=u'专利类别',
+        student_name=u'学生姓名',
+        student_class=u'班级',
+        precedence=u'位次',
+        teacher_name=u'指导教师',
+        patent_number=u'专利号',
+        certificate=u'证书号',
+        public=u'授权时间',
+        acachemy=u'学院'
     )
 
     column_labels = labels
