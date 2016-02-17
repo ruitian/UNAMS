@@ -31,6 +31,11 @@ class Config:
         "银奖",
         "铜奖",
     )
+    PATENT_CATEGORY = (
+        "实用新型",
+        "发明专利",
+        "外观设计"
+    )
 
     @staticmethod
     def init_app(app):
