@@ -149,9 +149,5 @@ class Student(db.Model):
             db_session=db.session
         )
 
-    def __init__(self, student_id, student_name):
-        self.student_id = student_id
-        self.student_name = student_name
-
     def __repr__(self):
         return self.student_id + '/' + self.student_name
