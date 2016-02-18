@@ -4,76 +4,80 @@
 <div class="row content">
     <form method="POST" class="form-horizontal" enctype="multipart/form-data">
         <div class="col-md-12">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <h3>
                   专利信息 
                 </h3>
                 <hr />
+            </div>
+            <div class="col-md-6">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{{ form.patent_title.label }}</label>
+                    <label class="col-sm-3 control-label">专利名称</label>
                     <div class="col-sm-9">
                         {{ form.patent_title(class="form-control") }}
                     </div>
                     {{ field_error(form.patent_title) }}
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{{ form.category.label }}</label>
+                    <label class="col-sm-3 control-label">专利类别</label>
                     <div class="col-sm-9">
                         {{ form.category(class="form-control") }}
                     </div>
                     {{ field_error(form.category) }}
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{{ form.student_name.label }}</label>
+                    <label class="col-sm-3 control-label">学生姓名</label>
                     <div class="col-sm-9">
                         {{ form.student_name(class="form-control") }}
                     </div>
                     {{ field_error(form.student_name) }}
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{{ form.student_class.label }}</label>
+                    <label class="col-sm-3 control-label">班级</label>
                     <div class="col-sm-9">
                         {{ form.student_class(class="form-control") }}
                     </div>
                     {{ field_error(form.student_class) }}
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{{ form.precedence.label }}</label>
+                    <label class="col-sm-3 control-label">位次</label>
                     <div class="col-sm-9">
                         {{ form.precedence(class="form-control") }}
                     </div>
                     {{ field_error(form.precedence) }}
                 </div>
+            </div>
+            <div class="col-md-6">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{{ form.teacher_name.label }}</label>
+                    <label class="col-sm-3 control-label">指导教师</label>
                     <div class="col-sm-9">
                         {{ form.teacher_name(class="form-control") }}
                     </div>
                     {{ field_error(form.teacher_name) }}
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{{ form.patent_number.label }}</label>
+                    <label class="col-sm-3 control-label">专利号</label>
                     <div class="col-sm-9">
-                        {{ form.patent_number(class="form-control", type="date") }}
+                        {{ form.patent_number(class="form-control") }}
                     </div>
                     {{ field_error(form.patent_number) }}
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{{ form.certificate.label }}</label>
+                    <label class="col-sm-3 control-label">证书号</label>
                     <div class="col-sm-9">
                         {{ form.certificate(class="form-control") }}
                     </div>
                     {{ field_error(form.certificate) }}
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{{ form.public.label }}</label>
+                    <label class="col-sm-3 control-label">授权时间</label>
                     <div class="col-sm-9">
-                        {{ form.public(class="form-control") }}
+                        {{ form.public(class="form-control", type="date") }}
                     </div>
                     {{ field_error(form.public) }}
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{{ form.acachemy.label }}</label>
+                    <label class="col-sm-3 control-label">学院</label>
                     <div class="col-sm-9">
                         {{ form.acachemy(class="form-control") }}
                     </div>
@@ -82,18 +86,18 @@
             </div>
         </div>
         <div class="col-md-12">
-            <div class="col-md-6">
+            <div class="col-md-7">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <h3>
                 提交信息
                 </h3>
                 <hr />
                 <div class="col-sm-6">
-                    {{ form.submit(class="btn btn-primary btn-block") }}
+                    <input type="submit" class="btn btn-primary btn-block" value="提交" />
                 </div>
                 <div class="col-sm-6">
-                  <input type="reset" class="btn btn-success btn-block" value="重置"></input>
+                  <input type="reset" class="btn btn-success btn-block" value="重置" />
                 </div>
             </div>
         </div>
