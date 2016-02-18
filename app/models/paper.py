@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from app import app, db
+from wtforms.ext.sqlalchemy.orm import model_form
 
 
 class PaperModel(db.Model):
@@ -18,3 +19,10 @@ class PaperModel(db.Model):
 
     def __repr__(self):
         return self.paper_title
+
+    @classmethod
+    def model_form(cls, *args, **kwargs):
+        return model_form(
+            model=cls,
+            db_session=db.session
+        )

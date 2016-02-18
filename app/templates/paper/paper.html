@@ -4,69 +4,73 @@
 <div class="row content">
     <form method="POST" class="form-horizontal" enctype="multipart/form-data">
         <div class="col-md-12">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <h3>
                    论文信息
                 </h3>
                 <hr />
+            </div>
+            <div class="col-md-6">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{{ form.paper_title.label }}</label>
+                    <label class="col-sm-3 control-label">论文题目</label>
                     <div class="col-sm-9">
                         {{ form.paper_title(class="form-control") }}
                     </div>
                     {{ field_error(form.paper_title) }}
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{{ form.periodical.label }}</label>
+                    <label class="col-sm-3 control-label">刊物名称</label>
                     <div class="col-sm-9">
                         {{ form.periodical(class="form-control") }}
                     </div>
                     {{ field_error(form.periodical) }}
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{{ form.acachemy.label }}</label>
+                    <label class="col-sm-3 control-label">学院</label>
                     <div class="col-sm-9">
                         {{ form.acachemy(class="form-control") }}
                     </div>
                     {{ field_error(form.acachemy) }}
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{{ form.grade.label }}</label>
+                    <label class="col-sm-3 control-label">班级</label>
                     <div class="col-sm-9">
-                        {{ form.grade(class="form-control") }}
+                        {{ form.student_class(class="form-control") }}
                     </div>
-                    {{ field_error(form.grade) }}
+                    {{ field_error(form.student_class) }}
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{{ form.student_name.label }}</label>
+                    <label class="col-sm-3 control-label">作者</label>
                     <div class="col-sm-9">
                         {{ form.student_name(class="form-control") }}
                     </div>
                     {{ field_error(form.student_name) }}
                 </div>
+            </div>
+            <div class="col-md-6">
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{{ form.issn.label }}</label>
+                    <label class="col-sm-3 control-label">刊号</label>
                     <div class="col-sm-9">
                         {{ form.issn(class="form-control") }}
                     </div>
                     {{ field_error(form.issn) }}
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{{ form.public.label }}</label>
+                    <label class="col-sm-3 control-label">发表时间</label>
                     <div class="col-sm-9">
                         {{ form.public(class="form-control", type="date") }}
                     </div>
                     {{ field_error(form.public) }}
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{{ form.level.label }}</label>
+                    <label class="col-sm-3 control-label">档次</label>
                     <div class="col-sm-9">
                         {{ form.level(class="form-control") }}
                     </div>
                     {{ field_error(form.level) }}
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">{{ form.precedence.label }}</label>
+                    <label class="col-sm-3 control-label">位次</label>
                     <div class="col-sm-9">
                         {{ form.precedence(class="form-control") }}
                     </div>
@@ -75,18 +79,18 @@
             </div>
         </div>
         <div class="col-md-12">
-            <div class="col-md-6">
+            <div class="col-md-7">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <h3>
                 提交信息
                 </h3>
                 <hr />
                 <div class="col-sm-6">
-                    {{ form.submit(class="btn btn-primary btn-block") }}
+                    <input type="submit" class="btn btn-primary btn-block" value="提交"></input>
                 </div>
                 <div class="col-sm-6">
-                  <input type="reset" class="btn btn-success btn-block" value="重置"></input>
+                    <input type="reset" class="btn btn-success btn-block" value="重置"></input>
                 </div>
             </div>
         </div>
