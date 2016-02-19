@@ -36,7 +36,7 @@ class UnitAdmin(ModelViewMixin):
         unit_name='单位/学院名称'
     )
     column_labels = labels
-    column_list = ['unit_id', 'unit_name']
+    column_list = ['id', 'unit_id', 'unit_name']
     can_edit = False
     list_template = 'admin/department.html'
 

@@ -34,6 +34,16 @@ class PatentAdmin(ModelViewMixin):
     )
 
     column_labels = labels
+    column_searchable_list = [
+        'id',
+        'student_name',
+        'patent_number',
+        'certificate'
+    ]
+    column_editable_list = [
+        'student_name',
+        'teacher_name',
+    ]
 
     def __init__(self, session, **kwargs):
         super(PatentAdmin, self).__init__(PatentModel, session, **kwargs)
