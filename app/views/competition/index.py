@@ -115,6 +115,7 @@ def add_student():
         except:
             flash(u'未知错误')
             db.session.rollback()
+            db.session.commit()
     competition = Competition.query.get(id)
     competition.students.append(student)
     db.session.commit()
