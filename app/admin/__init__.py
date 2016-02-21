@@ -23,3 +23,4 @@ from . import department  # noqa
 from . import competition  # noqa
 from . import paper  # noqa
 from . import patent  # noqa
+from . import production  # noqa
