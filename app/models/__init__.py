@@ -6,3 +6,4 @@ from .grade import *  # noqa
 from .competition import *  # noqa
 from .paper import *  # noqa
 from .patent import *  # noqa
+from .production import *  # noqa
