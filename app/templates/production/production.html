@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% from "_macros.html" import field_error %}
+{% block title %}
+作品
+{% endblock %}
+{% block page_content %}
+<div class="row content">
+    <div class="col-md-12">
+        <form method="POST" class="form-horizontal" enctype="multipart/form-data">
+            <div class="col-md-6">
+                <h3>
+                    作品信息
+                </h3>
+                <hr/>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">作品名称</label>
+                    <div class="col-sm-9">
+                        {{ form.pro_title(class="form-control") }}
+                    </div>
+                    {{ field_error(form.pro_title) }}
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">参与比赛</label>
+                    <div class="col-sm-9">
+                        {{ form.pro_match(class="form-control") }}
+                    </div>
+                    {{ field_error(form.pro_match) }}
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">作品类型</label>
+                    <div class="col-sm-9">
+                        {{ form.pro_type(class="form-control") }}
+                    </div>
+                    {{ field_error(form.pro_type) }}
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">设计者</label>
+                    <div class="col-sm-9">
+                        {{ form.pro_actor(class="form-control") }}
+                    </div>
+                    {{ field_error(form.pro_actor) }}
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">设计时间</label>
+                    <div class="col-sm-9">
+                        {{ form.pro_time(class="form-control", type="date") }}
+                    </div>
+                    {{ field_error(form.pro_time) }}
+                </div>
+                <h3>
+                提交信息
+                </h3>
+                <hr />
+                <div class="col-sm-6">
+                    <input type="submit" class="btn btn-primary btn-block" value="提交" />
+                </div>
+                <div class="col-sm-6">
+                  <input type="reset" class="btn btn-success btn-block" value="重置" />
+                </div>
+            </div>
+        </form>
+
+        <div class="col-md-6">
+            <h3>
+                <div class="col-md-12">
+                    <form id="uploadform" method="post" enctype="multipart/form-data">
+                        <input name="file" type="file" class="col-xs-8 alert-info btn" />
+                        <button id="submit" type="button" class="col-xs-2 col-xs-offset-1 btn btn-info">上传</button>
+                    </form>
+                </div>
+            </h3>
+            <div class="col-xs-offset-3 col-xs-6" style="padding-top: 30px;">
+                <img src="{{url_for('static', filename='img/upload.png')}}" width="300" id="show_pro_image"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+    {% block production_script %}
+    <script>
+        $(function() {
+            $('#submit').click(function() {
+                event.preventDefault();
+                var form_data = new FormData($('#uploadform')[0]);
+                $.ajax({
+                    type: 'POST',
+                    url: '/uploadajax',
+                    data: form_data,
+                    contentType: false,
+                    processData: false,
+                    success:  function(data){
+                        $('#show_pro_image').attr("src", "/uploads/production/"+data);
+                    }
+                });
+            });
+        });
+    </script>
+
+    {% endblock %}
