@@ -22,9 +22,9 @@ class RoleModel(db.Model):
     @staticmethod
     def insert_roles():
         roles = {
-            u'教师': (0xff),
-            u'单位管理员': (0xff),
-            u'管理员': (0xff)
+            u'教师': (0x04),
+            u'单位管理员': (0x08),
+            u'管理员': (0x80)
         }
         for r in roles:
             role = RoleModel.query.filter_by(role_name=r).first()
