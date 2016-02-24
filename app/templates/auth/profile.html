@@ -1,0 +1,54 @@
+{% extends "auth/_profile.html" %}
+{% block right_content%}
+<div class="panel panel-default">
+        <div class="panel-heading">基本信息</div>
+        <div class="panel-body">
+            <div class="col-xs-12" style="padding-bottom: 10px;">头像</div>
+                <div class="col-xs-2" id="image">
+                    {% if current_user.user_image == False %}
+                    <img id="show_pro_image" src="{{ url_for('static', filename='img/de_tx.png')}}" width="100%">
+                    {% else %}
+                    <img id="show_pro_image1" src="/prof_image/profile_{{ current_user.id }}.jpg" width="100%">
+                    {% endif %}
+                </div>
+            <form id="uploadform" method="post" enctype="multipart/form-data">
+                <div class="col-xs-6">
+                    <input type="file" class="col-xs-12 alert-info btn" name="file" value="上传头像"/>
+                    <p>上传后缀名为jpg或者png的一寸照片</p>
+                </div>
+                <div class="col-xs-2">
+                    <button class="btn btn-info" id="submit">上传</button>
+                </div>
+            </form>
+            <form method="post" action="{{ url_for('nick_name')}}">
+                <div class="col-xs-12" style="padding-bottom: 10px;"></div>
+                <div class="col-xs-8 form-group">
+                    <label>姓名</label>
+                    <input class="form-control" value="{{ current_user.nick_name}}" name="nick_name"/>
+                </div>
+                <div class="col-xs-12">
+                    <button type="submit" class="btn btn-success">更新信息</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<script>
+    $(function() {
+            $('#submit').click(function() {
+                event.preventDefault();
+                var form_data = new FormData($('#uploadform')[0]);
+                $.ajax({
+                    type: 'POST',
+                    url: '/update_prof_image',
+                    data: form_data,
+                    contentType: false,
+                    processData: false,
+                    success:  function(data){
+                        window.location.reload();
+                    }
+                });
+            });
+        });
+</script>
+{% endblock %}

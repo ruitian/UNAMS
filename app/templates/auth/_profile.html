@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}个人资料{% endblock %}
+{% block page_content %}
+<div class="col-md-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">个人资料</div>
+        <div class="panel-body">
+            <nav>
+                <ul class="nav nav-stacked">
+                    <li role="presentation" class="active"><a href="{{url_for('setting')}}">基本信息</a></li>
+                    <li role="presentation" class="active"><a href="{{url_for('setting_pass')}}">密码</a></li>
+                    {% if current_user.role.role_name == "管理员" or current_user.role.role_name == "单位管理员" %}
+                    <li role="presentation" class="active"><a href="{{url_for('setting_pass')}}">用户密码</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="col-md-8">
+    {% block right_content %}
+    {% endblock %}
+</div>
+{% endblock %}

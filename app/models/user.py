@@ -19,6 +19,7 @@ class AnonymousUser(AnonymousUserMixin):
 
     def is_administrator(self):
         return False
+login_manager.anonymous_user = AnonymousUser
 
 
 class UserModel(UserMixin, db.Model):
@@ -31,6 +32,7 @@ class UserModel(UserMixin, db.Model):
     user_name = db.Column(db.String(128), nullable=False, unique=True)
     nick_name = db.Column(db.String(128), nullable=False)
     user_password_hash = db.Column(db.String(128), nullable=False)
+    user_image = db.Column(db.Boolean, default=False, nullable=False)
 
     date_created = db.Column(
         db.TIMESTAMP, index=True,
