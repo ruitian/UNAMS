@@ -9,16 +9,26 @@
                 <ul class="nav nav-stacked">
                     <li role="presentation" class="active"><a href="{{url_for('setting')}}">基本信息</a></li>
                     <li role="presentation" class="active"><a href="{{url_for('setting_pass')}}">密码</a></li>
-                    {% if current_user.role.role_name == "管理员" or current_user.role.role_name == "单位管理员" %}
-                    <li role="presentation" class="active"><a href="{{url_for('setting_pass')}}">用户密码</a></li>
-                    {% endif %}
                 </ul>
             </nav>
         </div>
     </div>
+    {% if current_user.role.role_name == "管理员" or current_user.role.role_name == "单位管理员" %}
+    <div class="panel panel-default">
+        <div class="panel-heading">其他用户</div>
+        <div class="panel-body">
+            <nav>
+                <ul class="nav nav-stacked">
+                    <li role="presentation" class="active"><a href="{{url_for('show_user_pass')}}">用户密码</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    {% endif %}
 </div>
 <div class="col-md-8">
     {% block right_content %}
     {% endblock %}
 </div>
+
 {% endblock %}
