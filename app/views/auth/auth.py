@@ -6,6 +6,7 @@ from flask import (
     redirect,
     url_for,
     session,
+    jsonify,
     send_from_directory
 )
 from ... models import UserModel
@@ -18,6 +19,7 @@ from flask.ext.login import (
 )
 from app import app, db
 import os
+import json
 
 
 ALLOWED_EXTENSIONS = set(['jpg', 'png', 'gif', 'jpeg'])
@@ -106,9 +108,75 @@ def user_pass():
             flash(u'原密码不正确')
             return redirect(url_for('user_pass'))
         new_pass = request.form['new_pass']
+        verify_pass = request.form['verify_pass']
+        if new_pass == verify_pass:
+            user.password = new_pass
+            db.session.add(user)
+            db.session.commit()
+            flash(u'密码修改成功！请重新登陆系统')
+            return redirect(url_for('logout'))
+        else:
+            flash(u'两次密码不一致')
+            return redirect(url_for('user_pass'))
+    return render_template('auth/pass.html')
+
+
+@app.route('/setting/user', methods=['GET', 'POST'])
+@login_required
+def show_user_pass():
+    return render_template('auth/user_pass.html')
+
+
+@app.route('/search_user', methods=['GET', 'POST'])
+@login_required
+def searchuser():
+    if request.method == "POST":
+        name = request.form['user_info']
+        if len(name) == 0:
+            #  判断管理员
+            if current_user.id_role == 3:
+                users = UserModel.query.all()
+                return render_template('auth/user_pass.html', users=users)
+            else:
+                users = UserModel.query.filter_by(
+                    id_unit=current_user.id_unit).all()
+                return render_template('auth/user_pass.html', users=users)
+        else:
+            if current_user.id_role == 3:
+                modify_user = UserModel.query.filter_by(
+                    user_name=name).first()
+                if modify_user is not None:
+                    return render_template('auth/user_pass.html',
+                                           modify_user=modify_user)
+                flash(u'对不起，您输入有误！')
+                return redirect(url_for('show_user_pass'))
+            else:
+                users = UserModel.query.filter_by(
+                    id_unit=current_user.id_unit).all()
+                search_user = UserModel.query.filter_by(
+                    user_name=name).first()
+                if search_user is not None:
+                    for user in users:
+                        if name == user.user_name:
+                            modify_user = UserModel.query.filter_by(
+                                user_name=name).first()
+                            return render_template('auth/user_pass.html',
+                                                   modify_user=modify_user)
+                flash(u'对不起，您输入有误！')
+                return redirect(url_for('show_user_pass'))
+    return render_template('auth/user_pass.html')
+
+
+@app.route('/update_userpass', methods=['GET', 'POST'])
+@login_required
+def update_user_pass():
+    if request.method == "POST":
+        user_name = request.form['user_name']
+        new_pass = request.form['new_pass']
+        user = UserModel.query.filter_by(user_name=user_name).first()
         user.password = new_pass
         db.session.add(user)
         db.session.commit()
-        flash(u'密码修改成功！请重新登陆系统')
-        return redirect(url_for('logout'))
-    return render_template('auth/pass.html')
+        flash(u'密码修改成功！')
+        redirect(url_for('show_user_pass'))
+    return render_template('auth/user_pass.html')
