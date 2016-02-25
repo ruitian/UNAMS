@@ -71,3 +71,10 @@ class UserModel(UserMixin, db.Model):
 
     def __repr__(self):
         return self.user_name
+
+    def user_to_json(self):
+        user = UserModel.query.all()
+        return {
+            'user_name': self.user_name,
+            'nick_name': self.nick_name
+        }
