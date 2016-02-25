@@ -135,8 +135,17 @@ def searchuser():
         if len(name) == 0:
             #  判断管理员
             if current_user.id_role == 3:
+                '''
+                page = request.args.get('page', 1, type=int)
+                pagination = UserModel.query.order_by(
+                    UserModel.date_created.desc()).paginate(
+                    page, per_page=app.config['FLASK_POSTS_PER_PAGE'],
+                    error_out=False)
+                users = pagination.items
+                '''
                 users = UserModel.query.all()
-                return render_template('auth/user_pass.html', users=users)
+                return render_template('auth/user_pass.html',
+                                       users=users)
             else:
                 users = UserModel.query.filter_by(
                     id_unit=current_user.id_unit).all()
