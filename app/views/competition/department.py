@@ -5,9 +5,10 @@ from ... models import (
     UserModel,
     Competition,
     Grade,
-    Student)
+    Student,
+    CompTea)
 from flask import request, jsonify, redirect, url_for
-from flask.ext.login import login_required
+from flask.ext.login import login_required, current_user
 
 import json
 from ... import app, db
@@ -43,13 +44,22 @@ def getTeacher():
 @app.route('/competition/_del_teacher')
 @login_required
 def delTeacher():
-    id = request.args.get('id')
+    '''
     teacher_id = request.args.get('teacher_id')
     competition = Competition.query.get(id)
     teacher = UserModel.query.filter_by(user_name=teacher_id).first()
     competition.teachers.remove(teacher)
     db.session.commit()
-    return redirect(url_for('show_competition', id=id))
+    '''
+    id = request.args.get('id')
+    teacher_id = request.args.get('teacher_id')
+    comptea = CompTea.query.filter_by(teacher_id=teacher_id).first()
+    db.session.delete(comptea)
+    db.session.commit()
+    return redirect(url_for(
+        'show_competition',
+        username=current_user.user_name,
+        id=id))
 
 
 @app.route('/competition/_del_student')
@@ -61,7 +71,10 @@ def delStudent():
     student = Student.query.filter_by(student_id=student_id).first()
     competition.students.remove(student)
     db.session.commit()
-    return redirect(url_for('show_competition', id=id))
+    return redirect(url_for(
+        'show_competition',
+        username=current_user.user_name,
+        id=id))
 
 
 @app.route('/competition/_edit_student', methods=['POST'])
@@ -90,4 +103,7 @@ def editStudent():
     except:
         flash(u'未知错误')
         db.session.rollback()
-    return redirect(url_for('show_competition', id=id))
+    return redirect(url_for(
+        'show_competition',
+        username=current_user.user_name,
+        id=id))

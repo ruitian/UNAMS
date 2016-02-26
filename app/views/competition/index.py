@@ -19,7 +19,8 @@ from ... models import (
     Participant,
     UnitModel,
     Student,
-    MajorModel
+    MajorModel,
+    CompTea
 )
 from flask.ext.login import login_required, current_user
 
@@ -64,12 +65,18 @@ def competition():
 @app.route('/competition/<username>/<int:id>')
 @login_required
 def show_competition(username, id):
+    teachers = []
     if username != current_user.user_name and username != 'admin':
         return redirect(url_for('competition'))
+    compteas = CompTea.query.filter_by(competition_id=id).all()
+    for comptea in compteas:
+        teacher = UserModel.query.filter_by(id=comptea.teacher_id).first()
+        teachers.append(teacher)
     competition = Competition.query.filter_by(id=id).first_or_404()
     student_form = StudentForm()
     return render_template('competition/show_competition.html',
                            competition=competition,
+                           teachers=teachers,
                            student_form=student_form, id=id)
 
 
@@ -133,6 +140,10 @@ def add_teacher():
     id = request.form['competition_id']
     teacher = UserModel.query.filter_by(user_name=teacher_id).first()
     competition = Competition.query.get(id)
-    competition.teachers.append(teacher)
+    # competition.teachers.append(teacher)
+    comptea = CompTea(competitions=competition, teachers=teacher)
+    db.session.add(comptea)
     db.session.commit()
-    return redirect(url_for('show_competition', id=id))
+    return redirect(url_for(
+        'show_competition',
+        username=current_user.user_name, id=id))
