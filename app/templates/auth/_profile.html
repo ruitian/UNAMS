@@ -7,6 +7,9 @@
         <div class="panel-body">
             <nav>
                 <ul class="nav nav-stacked">
+                    {% if current_user.role.role_name != "管理员" %}
+                    <li role="presentation" class="active"><a href="{{url_for('showPro')}}">参与项目</a></li>
+                    {% endif %}
                     <li role="presentation" class="active"><a href="{{url_for('setting')}}">基本信息</a></li>
                     <li role="presentation" class="active"><a href="{{url_for('setting_pass')}}">密码</a></li>
                 </ul>

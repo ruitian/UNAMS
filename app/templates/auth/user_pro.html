@@ -1,0 +1,25 @@
+{% extends "auth/_profile.html" %}
+{% block right_content %}
+        <h3>竞赛部分</h3>
+        {% if competition %}
+        <table class="table table-bordered table-hover" style="font-size: 14px;">
+            <tr class="active">
+                <td>竞赛项目</td>
+                <td>成果名称</td>
+                <td>获奖级别</td>
+                <td>等级</td>
+                <td>获奖时间</td>
+                <td>颁奖单位</td>
+            </tr>
+            <tr>
+                <td>{{ project.project_name }}</td>
+                <td>{{ competition.achievement_name }}</td>
+                <td>{{ competition.awards_unit }}</td>
+                <td>{{ competition.winning_time }}</td>
+                <td>{{ competition.winning_level }}</td>
+                <td>{{ competition.rate }}</td>
+            </tr>
+        </table>
+        {% endif %}
+        <pre>暂无参与的项目</pre>
+{% endblock %}
