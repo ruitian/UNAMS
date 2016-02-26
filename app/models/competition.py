@@ -3,6 +3,7 @@ from app import app, db
 from wtforms.ext.sqlalchemy.orm import model_form
 from wtforms import widgets, fields  # noqa
 from .user import UserModel
+from .comptea import CompTea
 
 
 competition_student = db.Table(
@@ -14,6 +15,7 @@ competition_student = db.Table(
               db.Integer,
               db.ForeignKey('student.id'))
 )
+'''
 competition_teacher = db.Table(
     'competition_teacher',
     db.Column('competition_id',
@@ -23,6 +25,7 @@ competition_teacher = db.Table(
               db.Integer,
               db.ForeignKey('user.id'))
 )
+'''
 '''竞赛项目'''
 
 
@@ -101,12 +104,14 @@ class Competition(db.Model):
                                backref=db.backref(
                                    'competitions', lazy='joined'),
                                lazy='dynamic')
+    '''
     teachers = db.relationship('UserModel',
                                secondary=competition_teacher,
                                single_parent=True,
                                backref=db.backref(
                                    'competitions', lazy='joined'),
                                lazy='dynamic')
+    '''
 
     winning_level = db.Column(db.Enum(
         *app.config['COMPETITION_LEVEL'],
@@ -115,6 +120,13 @@ class Competition(db.Model):
     rate = db.Column(db.Enum(
         *app.config['COMPETITION_RATE'],
         name='competition_rate_enum'))
+
+    teachers = db.relationship(
+        'CompTea',
+        foreign_keys=[CompTea.competition_id],
+        backref=db.backref('competitions', lazy='joined'),
+        lazy='dynamic',
+        cascade='all, delete-orphan')
 
     @classmethod
     def model_form(cls, *args, **kwargs):
