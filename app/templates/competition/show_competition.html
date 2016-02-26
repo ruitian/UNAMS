@@ -41,7 +41,7 @@
                 </button>
             </h4>
             <div class="row">
-                {% for teacher in competition.teachers%}
+                {% for teacher in teachers%}
                 <div class="col-xs-4">
                     <div class="teacher-info">
                         <p>编号:<b>{{ teacher.user_name }}</b></p>
@@ -50,7 +50,7 @@
                         <hr style="margin-bottom: 5px;">
                         <div class="btn-group btn-group-xs" role="group" aria-label="...">
                             <button type="button" class="btn btn-link">
-                                <span class="glyphicon glyphicon-remove" data="{{teacher.user_name}}" aria-hidden="true" onclick="delTeacher()"></span>&nbsp;
+                                <span class="glyphicon glyphicon-remove" data="{{teacher.id}}" aria-hidden="true" onclick="delTeacher()"></span>&nbsp;
                             </button>
                         </div>
                     </div>
