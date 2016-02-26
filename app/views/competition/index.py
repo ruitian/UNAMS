@@ -21,7 +21,7 @@ from ... models import (
     Student,
     MajorModel
 )
-from flask.ext.login import login_required
+from flask.ext.login import login_required, current_user
 
 from ... import app, db
 from ...forms import StudentForm
@@ -55,13 +55,17 @@ def competition():
             file.filename = 'competition_%s.jpg' % competition.id
             file_url = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
             file.save(file_url)
-        return redirect(url_for('show_competition', id=competition.id))
+        return redirect(url_for('show_competition',
+                                username=current_user.user_name,
+                                id=competition.id))
     return render_template('competition/competition.html', form=form)
 
 
-@app.route('/show_competition/<int:id>')
+@app.route('/competition/<username>/<int:id>')
 @login_required
-def show_competition(id):
+def show_competition(username, id):
+    if username != current_user.user_name and username != 'admin':
+        return redirect(url_for('competition'))
     competition = Competition.query.filter_by(id=id).first_or_404()
     student_form = StudentForm()
     return render_template('competition/show_competition.html',

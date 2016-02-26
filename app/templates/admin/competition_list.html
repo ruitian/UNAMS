@@ -138,7 +138,7 @@
                 {% endfor %}
             {% endblock %}
              {% set num =get_value(row, list_columns[0][0])%}
-            <td><a href="{{url_for('show_competition', id=num)}}">查看</a></td>
+            <td><a href="{{url_for('show_competition', username=current_user.user_name, id=num)}}">查看</a></td>
         </tr>
         {% else %}
         <tr>
