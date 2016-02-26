@@ -9,7 +9,11 @@ from flask import (
     jsonify,
     send_from_directory
 )
-from ... models import UserModel
+from ... models import(
+    UserModel,
+    CompTea,
+    Project,
+    Competition)
 from ... forms import LoginForm
 from flask.ext.login import (
     login_required,
@@ -189,3 +193,18 @@ def update_user_pass():
         flash(u'密码修改成功！')
         redirect(url_for('show_user_pass'))
     return render_template('auth/user_pass.html')
+
+
+@app.route('/show_pro', methods=['GET', 'POST'])
+@login_required
+def showPro():
+    comptea = CompTea.query.filter_by(teacher_id=current_user.id).first()
+    if comptea is not None:
+        competition = \
+            Competition.query.filter_by(id=comptea.competition_id).first()
+        project = Project.query.filter_by(id=competition.id_project).first()
+        return render_template(
+            'auth/user_pro.html',
+            project=project,
+            competition=competition)
+    return render_template('auth/user_pro.html')
