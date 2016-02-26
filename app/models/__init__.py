@@ -7,3 +7,4 @@ from .competition import *  # noqa
 from .paper import *  # noqa
 from .patent import *  # noqa
 from .production import *  # noqa
+from .comptea import *  # noqa
