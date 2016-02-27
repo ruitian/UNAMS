@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{% endblock %}</title>
-    <!-- Bootstrap -->
-    {% block link %}
+    <!-- Bootstrap --> {% block link %}
     <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/base.css')}}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/font-awesome.min.css')}}" rel="stylesheet">
@@ -67,7 +66,7 @@
   </div>
 </div>
 
-<div class="container ">
+<div class="container" style="margin-top: 10px;">
     {% block messages %}
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
