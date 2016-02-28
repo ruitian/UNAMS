@@ -100,6 +100,7 @@ body {
 	background-color: #fff;
 	padding: 12px 0;
 	box-shadow: 0 0 3px #ccc;
+	border-color: #fff;
 	font-weight: 500;
 }
 .navbar-default .navbar-brand {
@@ -115,7 +116,7 @@ body {
 	border: 0px solid transparent;
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-	color: #38b5c9;	
+	color: #38b5c9;
 }
 a img {
 	background: white;

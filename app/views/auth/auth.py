@@ -51,7 +51,7 @@ def login():
 def logout():
     logout_user()
     flash(u'您已退出系统')
-    return redirect('/')
+    return redirect('/login')
 
 
 @app.route('/setting/profile', methods=['GET', 'POST'])
