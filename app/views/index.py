@@ -10,10 +10,3 @@ from .. models import Permission
 @login_required
 def index():
     return redirect(url_for('competition'))
-
-
-@app.route('/test')
-@login_required
-@permission_required(Permission.ADMINISTER)
-def for_only():
-    return "for sfsdfsdf"
