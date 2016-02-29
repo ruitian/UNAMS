@@ -198,13 +198,36 @@ def update_user_pass():
 @app.route('/show_pro', methods=['GET', 'POST'])
 @login_required
 def showPro():
-    comptea = CompTea.query.filter_by(teacher_id=current_user.id).first()
-    if comptea is not None:
-        competition = \
-            Competition.query.filter_by(id=comptea.competition_id).first()
-        project = Project.query.filter_by(id=competition.id_project).first()
-        return render_template(
-            'auth/user_pro.html',
-            project=project,
-            competition=competition)
+    if current_user.role.role_name == '教师':
+        comptea = CompTea.query.filter_by(teacher_id=current_user.id).first()
+        if comptea is not None:
+            competition = \
+                Competition.query.filter_by(id=comptea.competition_id).first()
+            project = Project.query.filter_by(
+                id=competition.id_project).first()
+            return render_template(
+                'auth/user_pro.html',
+                project=project,
+                competition=competition)
+        return render_template('auth/user_pro.html')
+
+    elif current_user.role.role_name == '单位管理员':
+        compteas = CompTea.query.all()
+        teachers_id = []
+        one_teachers_id = []
+        #  get teachers
+        for comptea in compteas:
+            teachers_id.append(comptea.teacher_id)
+        new_teachers_id = sorted(set(teachers_id), key=teachers_id.index)
+        #  get one  alchemy teachers
+        for new_teacher_id in new_teachers_id:
+            user = UserModel.query.filter_by(id=new_teacher_id).first()
+            if current_user.id_unit == user.id_unit:
+                one_teachers_id.append(user)
+        #  输出整个学院参与项目的所有老师
+        teachers = []
+        for teacher_id in one_teachers_id:
+            user = UserModel.query.filter_by(id=teacher_id).first()
+            teachers.append(user)
+        return render_template('auth/user_pro.html', teachers=teachers)
     return render_template('auth/user_pro.html')
