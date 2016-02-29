@@ -28,9 +28,14 @@
         
         {% if current_user.role.role_name == '单位管理员' %}
             {% if teachers %}
+            <table class="table table-bordered table-hover" style="font-size: 14px;">
                 {% for teacher in teachers %}
-                    {{  teacher.nick_name }}
+                    <tr class="active">
+                        <td>{{  teacher.nick_name }}</td>
+                        <td><a class="link">查看具体信息</a></td>
+                    </tr>
                 {% endfor %}
+            </table>
             {% else %}
             <pre>暂时没有参与的老师</pre>
             {% endif %}
