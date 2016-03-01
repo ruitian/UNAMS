@@ -223,11 +223,32 @@ def showPro():
         for new_teacher_id in new_teachers_id:
             user = UserModel.query.filter_by(id=new_teacher_id).first()
             if current_user.id_unit == user.id_unit:
-                one_teachers_id.append(user)
+                one_teachers_id.append(user.id)
         #  输出整个学院参与项目的所有老师
         teachers = []
         for teacher_id in one_teachers_id:
             user = UserModel.query.filter_by(id=teacher_id).first()
             teachers.append(user)
+        for teacher in teachers:
+            print teacher.nick_name
         return render_template('auth/user_pro.html', teachers=teachers)
     return render_template('auth/user_pro.html')
+
+
+@app.route('/get_competition')
+@login_required
+def get_competitions():
+    teacher_id = request.args.get('id')
+    competitions = []
+    compteas = CompTea.query.filter_by(
+        teacher_id=teacher_id).all()
+    for comptea in compteas:
+        competition = Competition.query.filter_by(
+            id=comptea.competition_id).first()
+        competitions.append(competition)
+        return jsonify({
+            'competition': [
+                competition.competition_to_json()
+                for competition in competitions]
+        })
+    return redirect(url_for('showPro'))

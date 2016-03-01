@@ -28,16 +28,40 @@
         
         {% if current_user.role.role_name == '单位管理员' %}
             {% if teachers %}
-            <table class="table table-bordered table-hover" style="font-size: 14px;">
+            <table class="table table-bordered table-hover" style="font-size: 14px;" id="outside">
                 {% for teacher in teachers %}
                     <tr class="active">
                         <td>{{  teacher.nick_name }}</td>
-                        <td><a class="link">查看具体信息</a></td>
+                        <td><a class="link" data="{{ teacher.id }}">查看具体信息</a></td>
                     </tr>
+                    <tr id="{{ teacher.id  }}"></tr>
                 {% endfor %}
             </table>
             {% else %}
             <pre>暂时没有参与的老师</pre>
             {% endif %}
         {% endif %}
+
+    <script>
+    function show_competition(e) {
+        teacher_id = e.target.getAttribute('data');
+        $.ajax({
+            url: 'get_competition',
+            data: {
+                id: teacher_id
+            },
+            success: function(data) {
+                console.log(data);
+                document.getElementById(teacher_id).innerHTML = 
+                "<td>" + data['competition'][0]['project']['project_name'] + "</td>" + 
+                "<td>" + data['competition'][0]['achievement_name'] + "</td>" + 
+                "<td>" + data['competition'][0]['winning_level'] + "</td>" + 
+                "<td>" + data['competition'][0]['rate'] + "</td>"
+                ;
+            } 
+        })
+    }
+    var el = document.getElementById("outside");
+    el.addEventListener("click", show_competition.bind(this), false)
+    </script> 
 {% endblock %}
