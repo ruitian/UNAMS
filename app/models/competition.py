@@ -41,6 +41,11 @@ class Project(db.Model):
     def __repr__(self):
         return self.project_name
 
+    def project_to_json(self):
+        return {
+            'project_name': self.project_name
+        }
+
 '''参与者'''
 
 
@@ -138,6 +143,16 @@ class Competition(db.Model):
                 'rate': {'widget': widgets.Select()}
             }
         )
+
+    def competition_to_json(self):
+        return {
+            'id': self.id,
+            'achievement_name': self.achievement_name,
+            'awards_unit': self.awards_unit,
+            'winning_level': self.winning_level,
+            'rate': self.rate,
+            'project': self.project.project_to_json()
+        }
 
 
 class Student(db.Model):
