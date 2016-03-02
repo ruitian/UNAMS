@@ -199,16 +199,17 @@ def update_user_pass():
 @login_required
 def showPro():
     if current_user.role.role_name == '教师':
-        comptea = CompTea.query.filter_by(teacher_id=current_user.id).first()
-        if comptea is not None:
-            competition = \
-                Competition.query.filter_by(id=comptea.competition_id).first()
-            project = Project.query.filter_by(
-                id=competition.id_project).first()
+        competitions = []
+        compteas = CompTea.query.filter_by(teacher_id=current_user.id).all()
+        if compteas is not None:
+            for comptea in compteas:
+                competition = \
+                    Competition.query.filter_by(
+                        id=comptea.competition_id).first()
+                competitions.append(competition)
             return render_template(
                 'auth/user_pro.html',
-                project=project,
-                competition=competition)
+                competitions=competitions)
         return render_template('auth/user_pro.html')
 
     elif current_user.role.role_name == '单位管理员':
