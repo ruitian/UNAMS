@@ -32,9 +32,12 @@
                 {% for teacher in teachers %}
                     <tr class="active">
                         <td>{{  teacher.nick_name }}</td>
-                        <td><a class="link" data="{{ teacher.id }}">查看具体信息</a></td>
+                        <td>
+                            <i class="fa fa-eye"></i>
+                            <a class="link" data="{{ teacher.id }}" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">查看</a></td>
                     </tr>
-                    <tr id="{{ teacher.id  }}"></tr>
+                    <tr id="{{ teacher.id  }}">
+                    </tr>
                 {% endfor %}
             </table>
             {% else %}
@@ -42,8 +45,35 @@
             {% endif %}
         {% endif %}
 
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">老师参与信息</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-hover" style="font-size: 14px;">
+                        <tr class="active">
+                            <td>竞赛项目</td>
+                            <td>成果名称</td>
+                            <td>获奖级别</td>
+                            <td>等级</td>
+                            <td>颁奖单位</td>
+                        </tr>
+                    </table>
+                    <table class="table table-bordered table-hover" style="font-size: 12px;" id="modal-table">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
     function show_competition(e) {
+        document.getElementById('modal-table').innerHTML='';
         teacher_id = e.target.getAttribute('data');
         $.ajax({
             url: 'get_competition',
@@ -51,13 +81,21 @@
                 id: teacher_id
             },
             success: function(data) {
-                console.log(data);
-                document.getElementById(teacher_id).innerHTML = 
-                "<td>" + data['competition'][0]['project']['project_name'] + "</td>" + 
-                "<td>" + data['competition'][0]['achievement_name'] + "</td>" + 
-                "<td>" + data['competition'][0]['winning_level'] + "</td>" + 
-                "<td>" + data['competition'][0]['rate'] + "</td>"
-                ;
+console.log(data);
+                var Table = document.getElementById('modal-table');
+                for (var i = 0; i < data['competition'].length; i++) {
+                    var NewRow = Table.insertRow();
+                    var NewCell1 = NewRow.insertCell();
+                    var NewCell2 = NewRow.insertCell();
+                    var NewCell3 = NewRow.insertCell();
+                    var NewCell4 = NewRow.insertCell();
+                    var NewCell5 = NewRow.insertCell();
+                    NewCell1.innerHTML =  data['competition'][i]['project']['project_name'];
+                    NewCell2.innerHTML = data['competition'][i]['achievement_name'];
+                    NewCell3.innerHTML = data['competition'][i]['winning_level'];
+                    NewCell4.innerHTML = data['competition'][i]['rate'];
+                    NewCell5.innerHTML = data['competition'][i]['awards_unit'];
+                }
             } 
         })
     }

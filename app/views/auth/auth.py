@@ -246,9 +246,8 @@ def get_competitions():
         competition = Competition.query.filter_by(
             id=comptea.competition_id).first()
         competitions.append(competition)
-        return jsonify({
-            'competition': [
-                competition.competition_to_json()
-                for competition in competitions]
-        })
-    return redirect(url_for('showPro'))
+    return jsonify({
+        'competition': [
+            competition.competition_to_json()
+            for competition in competitions]
+    })
