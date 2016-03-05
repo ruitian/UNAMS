@@ -3,97 +3,120 @@
 {% block title %}论文{% endblock %}
 {% block page_content %}
 <div class="row content">
-    <form method="POST" class="form-horizontal" enctype="multipart/form-data">
-        <div class="col-md-12">
-            <div class="col-md-12">
-                <h3>
-                   论文信息
-                </h3>
-                <hr />
+    <div class="col-md-12">
+        <h3>
+           论文信息
+        </h3>
+        <hr />
+    </div>
+    <div class="col-md-6">
+        <form method="POST" class="form-horizontal" enctype="multipart/form-data">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">论文题目</label>
+                <div class="col-sm-9">
+                    {{ form.paper_title(class="form-control") }}
+                </div>
+                {{ field_error(form.paper_title) }}
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">论文题目</label>
-                    <div class="col-sm-9">
-                        {{ form.paper_title(class="form-control") }}
-                    </div>
-                    {{ field_error(form.paper_title) }}
+            <div class="form-group">
+                <label class="col-sm-3 control-label">刊物名称</label>
+                <div class="col-sm-9">
+                    {{ form.periodical(class="form-control") }}
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">刊物名称</label>
-                    <div class="col-sm-9">
-                        {{ form.periodical(class="form-control") }}
-                    </div>
-                    {{ field_error(form.periodical) }}
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">学院</label>
-                    <div class="col-sm-9">
-                        {{ form.acachemy(class="form-control") }}
-                    </div>
-                    {{ field_error(form.acachemy) }}
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">班级</label>
-                    <div class="col-sm-9">
-                        {{ form.student_class(class="form-control") }}
-                    </div>
-                    {{ field_error(form.student_class) }}
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">作者</label>
-                    <div class="col-sm-9">
-                        {{ form.student_name(class="form-control") }}
-                    </div>
-                    {{ field_error(form.student_name) }}
-                </div>
+                {{ field_error(form.periodical) }}
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">刊号</label>
-                    <div class="col-sm-9">
-                        {{ form.issn(class="form-control") }}
-                    </div>
-                    {{ field_error(form.issn) }}
+            <div class="form-group">
+                <label class="col-sm-3 control-label">学院</label>
+                <div class="col-sm-9">
+                    {{ form.acachemy(class="form-control") }}
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">发表时间</label>
-                    <div class="col-sm-9">
-                        {{ form.public(class="form-control", type="date") }}
-                    </div>
-                    {{ field_error(form.public) }}
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">档次</label>
-                    <div class="col-sm-9">
-                        {{ form.level(class="form-control") }}
-                    </div>
-                    {{ field_error(form.level) }}
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">位次</label>
-                    <div class="col-sm-9">
-                        {{ form.precedence(class="form-control") }}
-                    </div>
-                    {{ field_error(form.precedence) }}
-                </div>
+                {{ field_error(form.acachemy) }}
             </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">班级</label>
+                <div class="col-sm-9">
+                    {{ form.student_class(class="form-control") }}
+                </div>
+                {{ field_error(form.student_class) }}
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">作者</label>
+                <div class="col-sm-9">
+                    {{ form.student_name(class="form-control") }}
+                </div>
+                {{ field_error(form.student_name) }}
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">刊号</label>
+                <div class="col-sm-9">
+                    {{ form.issn(class="form-control") }}
+                </div>
+                {{ field_error(form.issn) }}
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">发表时间</label>
+                <div class="col-sm-9">
+                    {{ form.public(class="form-control", type="date") }}
+                </div>
+                {{ field_error(form.public) }}
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">档次</label>
+                <div class="col-sm-9">
+                    {{ form.level(class="form-control") }}
+                </div>
+                {{ field_error(form.level) }}
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">位次</label>
+                <div class="col-sm-9">
+                    {{ form.precedence(class="form-control") }}
+                </div>
+                {{ field_error(form.precedence) }}
+            </div>
+
+            <hr />
+            <h3>
+            提交信息
+            </h3>
+            <hr />
+            <div class="col-sm-6">
+                <input type="submit" class="btn btn-primary btn-block" value="提交"></input>
+            </div>
+            <div class="col-sm-6">
+                <input type="reset" class="btn btn-success btn-block" value="重置"></input>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <label>上传论文封面</label>
+            <form action="" method="post" enctype="multipart/form-data">
+                <input id="paper-cover" type="file" name="paper-cover" class="file"/>
+            </form>
         </div>
-        <div class="col-md-12">
-            <div class="col-md-7">
-            </div>
-            <div class="col-md-5">
-                <h3>
-                提交信息
-                </h3>
-                <hr />
-                <div class="col-sm-6">
-                    <input type="submit" class="btn btn-primary btn-block" value="提交"></input>
-                </div>
-                <div class="col-sm-6">
-                    <input type="reset" class="btn btn-success btn-block" value="重置"></input>
-                </div>
-            </div>
+        <div class="row" style="margin-top: 20px;">
+            <label>上传正文</label>
+            <form action="" method="post" enctype="multipart/form-data">
+                <input id="paper-content" type="file" multiple="multiple" name="paper[]" class="file"/>
+            </form>
         </div>
-    </form>
+    </div>
+        {% endblock %}
+{% block paper_file %}
+<script>
+function initFileInput(ctrlName, uploadUrl){
+    var control = $('#' + ctrlName);
+    control.fileinput({
+        language: 'zh',
+        uploadUrl: uploadUrl,
+        allowedFileExtensions: ['jpg', 'png', 'gif'],
+        showUpload: false,
+        showCaption: false,
+        browseClass: "btn btn-info",
+    })
+}
+initFileInput('paper-cover', '/upload_paper_cover');
+initFileInput('paper-content', '/upload_paper_content');
+</script>
 {% endblock %}

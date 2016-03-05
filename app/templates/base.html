@@ -93,10 +93,14 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/fileinput.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/fileinput.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/fileinput_locale_zh.js') }}"></script>
 {% endblock %}
 {% block competition_script %}
 {% endblock %}
 {% block production_script %}
 {% endblock%}
+{% block paper_file %}
+{% endblock %}
 </body>
 </html>
