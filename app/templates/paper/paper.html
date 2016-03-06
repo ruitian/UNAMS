@@ -88,7 +88,7 @@
             </div>
         </form>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-5 col-md-offset-1">
         <div class="row">
             <label>上传论文封面</label>
             <form action="" method="post" enctype="multipart/form-data">
@@ -98,7 +98,7 @@
         <div class="row" style="margin-top: 20px;">
             <label>上传正文</label>
             <form action="" method="post" enctype="multipart/form-data">
-                <input id="paper-content" type="file" multiple="multiple" name="paper[]" class="file"/>
+                <input id="paper-content" type="file" multiple="multiple" name="papers" class="file"/>
             </form>
         </div>
     </div>
@@ -110,7 +110,7 @@ function initFileInput(ctrlName, uploadUrl){
     control.fileinput({
         language: 'zh',
         uploadUrl: uploadUrl,
-        allowedFileExtensions: ['jpg', 'png', 'gif'],
+        allowedFileExtensions: ['jpg', 'png', 'gif', 'doc'],
         showUpload: true,
         showCaption: false,
         browseClass: "btn btn-info",

@@ -14,10 +14,9 @@ import os
 
 ALLOWED_EXTENSIONS = set(['jpg', 'png', 'gif', 'jpeg'])
 UPLOAD_FOLDER = app.config['UPLOAD_FOLDER']
-FILE_NAME = None
+PAPER_COVER_NAME = None
 FILE_URL = None
-FILE = None
-FILES = None
+FILES = []
 
 
 def allowed_file(filename):
@@ -37,11 +36,20 @@ def paper():
         db.session.add(paper)
         db.session.commit()
 
-        filename = 'paper_cover%s.jpg' % paper.id
-        url = app.config['UPLOAD_FOLDER'] + '/paper'
-        print FILE_NAME
-        print url
-        os.rename(url+os.sep+str(FILE_NAME), url+os.sep+str(filename))
+        paper_cover_name = 'paper_cover%s.jpg' % paper.id
+        url = app.config['UPLOAD_FOLDER'] + '/paper/covers'
+        os.rename(
+            url+os.sep+str(PAPER_COVER_NAME), url+os.sep+str(paper_cover_name))
+
+        content_url = app.config['UPLOAD_FOLDER'] + '/paper/contents'
+        for file in FILES:
+            paper_content_name = \
+                'paper_content_%s_%s.jpg' % (paper.id, FILES.index(file))
+            filename = secure_filename(file.filename)
+            os.rename(
+                content_url+os.sep+str(filename),
+                content_url+os.sep+str(paper_content_name))
+
         flash(u'添加信息成功！')
         return redirect('/paper')
     return render_template('paper/paper.html', form=form)
@@ -55,11 +63,28 @@ def paper_cover():
         if files and allowed_file(files.filename):
             filename = secure_filename(files.filename)
             file_url = os.path.join(
-                app.config['UPLOAD_FOLDER']+'/paper', filename)
-            global FILE_NAME
-            FILE = files
-            FILE_NAME = filename
+                app.config['UPLOAD_FOLDER']+'/paper/covers', filename)
+            global PAPER_COVER_NAME
+            PAPER_COVER_NAME = filename
+            print PAPER_COVER_NAME
             files.save(file_url)
             return jsonify({
                 'message': 'ok'
             })
+
+
+@app.route('/upload_paper_content', methods=['POST'])
+@login_required
+def paper_content():
+    if request.method == "POST":
+        files = request.files.getlist("papers")
+        global FILES
+        for file in files:
+            FILES.append(file)
+            filename = secure_filename(file.filename)
+            file_url = os.path.join(
+                app.config['UPLOAD_FOLDER']+'/paper/contents', filename)
+            file.save(file_url)
+        return jsonify({
+            'message': 'ok'
+        })
