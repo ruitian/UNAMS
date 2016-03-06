@@ -43,9 +43,13 @@ def paper():
 
         content_url = app.config['UPLOAD_FOLDER'] + '/paper/contents'
         for file in FILES:
-            paper_content_name = \
-                'paper_content_%s_%s.jpg' % (paper.id, FILES.index(file))
             filename = secure_filename(file.filename)
+            if os.path.splitext(file.filename)[1] == '.doc':
+                paper_content_name = \
+                    'paper_content_%s_%s.doc' % (paper.id, FILES.index(file))
+            else:
+                paper_content_name = \
+                    'paper_content_%s_%s.jpg' % (paper.id, FILES.index(file))
             os.rename(
                 content_url+os.sep+str(filename),
                 content_url+os.sep+str(paper_content_name))
