@@ -14,7 +14,7 @@ import os
 
 
 ALLOWED_EXTENSIONS = set(['jpg', 'png', 'gif', 'jpeg'])
-UPLOAD_FOLDER = app.config['UPLOAD_FOLDER']
+UPLOAD_FOLDER = app.config['UPLOAD_FOLDER'] + '/production'
 FILE_NAME = None
 
 
@@ -29,7 +29,7 @@ def upldfile():
         if files and allowed_file(files.filename):
             filename = secure_filename(files.filename)
             file_url = os.path.join(
-                app.config['UPLOAD_FOLDER'], filename)
+                app.config['UPLOAD_FOLDER']+'/production', filename)
             files.save(file_url)
             file_size = os.path.getsize(file_url)
             global FILE_NAME

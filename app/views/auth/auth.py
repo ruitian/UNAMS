@@ -27,7 +27,7 @@ import json
 
 
 ALLOWED_EXTENSIONS = set(['jpg', 'png', 'gif', 'jpeg'])
-UPLOAD_FOLDER = app.config['UPLOAD_FOLDER']
+UPLOAD_FOLDER = app.config['UPLOAD_FOLDER'] + '/user'
 
 
 def allowed_file(filename):
@@ -75,7 +75,7 @@ def update_profimage():
         if file and allowed_file(file.filename):
             filename = "profile_%s.jpg" % current_user.id
             file_url = os.path.join(
-                app.config['UPLOAD_FOLDER'], filename
+                app.config['UPLOAD_FOLDER']+'/user', filename
             )
             file.save(file_url)
             user.user_image = True
