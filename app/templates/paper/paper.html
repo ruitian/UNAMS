@@ -90,13 +90,19 @@
     </div>
     <div class="col-md-5 col-md-offset-1">
         <div class="row">
-            <label>上传论文封面</label>
-            <form action="" method="post" enctype="multipart/form-data">
+            <h3>上传论文封面</h3>
+            <form method="post" enctype="multipart/form-data">
                 <input id="paper-cover" type="file" name="paper-cover" class="file"/>
             </form>
         </div>
+        <div class="row">
+            <h3>上传论文目录</h3>
+            <form method="post" enctype="multipart/form-data">
+                <input id="paper-catalogue" type="file" multiple="multiple" name="paper-catalogue" class="file"/>
+            </form>
+        </div>
         <div class="row" style="margin-top: 20px;">
-            <label>上传正文</label>
+            <h3>上传正文</h3>
             <form action="" method="post" enctype="multipart/form-data">
                 <input id="paper-content" type="file" multiple="multiple" name="papers" class="file"/>
             </form>
@@ -110,13 +116,22 @@ function initFileInput(ctrlName, uploadUrl){
     control.fileinput({
         language: 'zh',
         uploadUrl: uploadUrl,
-        allowedFileExtensions: ['jpg', 'png', 'gif', 'doc'],
+        allowedFileExtensions: ['jpg', 'png', 'gif'],
         showUpload: true,
         showCaption: false,
         browseClass: "btn btn-info",
     })
 }
+$('#paper-content').fileinput({
+    language: 'zh',
+    uploadUrl: '/upload_paper_content',
+    allowedFileExtensions: ['jpg', 'png', 'gif', 'doc'],
+    showUpload: true,
+    showCaption: false,
+    browseClass: "btn btn-info",
+})
+
 initFileInput('paper-cover', '/upload_paper_cover');
-initFileInput('paper-content', '/upload_paper_content');
+initFileInput('paper-catalogue', '/upload_paper_catalogue');
 </script>
 {% endblock %}
