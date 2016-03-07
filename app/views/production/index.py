@@ -37,6 +37,35 @@ def upldfile():
         return FILE_NAME
 
 
+@app.route('/upload_proimg', methods=['POST'])
+@login_required
+def upload_proimg():
+    if request.method == "POST":
+        files = request.files['pro_img']
+        if files and allowed_file(files.filename):
+            filename = secure_filename(files.filename)
+            file_url = os.path.join(
+                app.config['UPLOAD_FOLDER']+'/production/imgs', filename)
+            files.save(file_url)
+            file_size = os.path.getsize(file_url)
+            global FILE_NAME
+            FILE_NAME = filename
+        return jsonify({
+            'message': 'ok'
+        })
+
+
+@app.route('/upload_doc', methods=['POST'])
+@login_required
+def uploaddocu():
+    if request.method == 'POST':
+        files = request.files['docus']
+        print files.filename
+        return jsonify({
+            'message': 'ok'
+        })
+
+
 @app.route('/production', methods=['GET', 'POST'])
 @login_required
 def production():

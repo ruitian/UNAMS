@@ -61,16 +61,17 @@
         </form>
 
         <div class="col-md-6">
-            <h3>
-                <div class="col-md-12">
-                    <form id="uploadform" method="post" enctype="multipart/form-data">
-                        <input name="file" type="file" class="col-xs-8 alert-info btn" />
-                        <button id="submit" type="button" class="col-xs-2 col-xs-offset-1 btn btn-info">上传</button>
-                    </form>
-                </div>
-            </h3>
-            <div class="col-xs-offset-3 col-xs-6" style="padding-top: 30px;">
-                <img src="{{url_for('static', filename='img/upload.png')}}" width="300" id="show_pro_image"/>
+            <div class="col-md-12">
+                <h3>上传作品效果图</h3>
+                <form method="post" enctype="multipart/form-data">
+                    <input type="file" class="file" name="pro_img" id="pro_img" />
+                </form>
+            </div>
+            <div class="col-md-12">
+                <h3>上传附件</h3>
+                <form method="post" enctype="multipart/form-data">
+                    <input type="file" class="file" name="docus" id="docus" />
+                </form>
             </div>
         </div>
     </div>
@@ -95,6 +96,25 @@
                 });
             });
         });
+
+        $('#pro_img').fileinput({
+            language: 'zh',
+            uploadUrl: '/upload_proimg',
+            allowedFileExtensions: ['jpg', 'png', 'gif', 'doc'],
+            showUpload: true,
+            showCaption: false,
+            browseClass: "btn btn-info",
+        })
+
+        $('#docus').fileinput({
+            language: 'zh',
+            uploadUrl: '/upload_doc',
+
+            allowedFileExtensions: ['doc', 'xls'],
+            showUpload: true,
+            showCaption: false,
+            browseClass: "btn btn-info",
+        })
     </script>
 
     {% endblock %}
