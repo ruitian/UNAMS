@@ -70,7 +70,7 @@
             <div class="col-md-12">
                 <h3>上传附件</h3>
                 <form method="post" enctype="multipart/form-data">
-                    <input type="file" class="file" name="docus" id="docus" />
+                    <input type="file" class="file" name="annex" id="docus" />
                 </form>
             </div>
         </div>
@@ -80,23 +80,6 @@
 {% endblock %}
     {% block production_script %}
     <script>
-        $(function() {
-            $('#submit').click(function() {
-                event.preventDefault();
-                var form_data = new FormData($('#uploadform')[0]);
-                $.ajax({
-                    type: 'POST',
-                    url: '/uploadajax',
-                    data: form_data,
-                    contentType: false,
-                    processData: false,
-                    success:  function(data){
-                        $('#show_pro_image').attr("src", "/uploads/production/"+data);
-                    }
-                });
-            });
-        });
-
         $('#pro_img').fileinput({
             language: 'zh',
             uploadUrl: '/upload_proimg',
