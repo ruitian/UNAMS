@@ -41,24 +41,6 @@ def upload_proimg():
         })
 
 
-@app.route('/upload_doc', methods=['POST'])
-@login_required
-def uploaddocu():
-    if request.method == 'POST':
-        files = request.files['annex']
-        if files and allowed_file(files.filename):
-            filename = secure_filename(files.filename)
-            file_url = os.path.join(
-                app.config['UPLOAD_FOLDER']+'/production/annex', filename)
-            files.save(file_url)
-            file_size = os.path.getsize(file_url)
-            global DOC_NAME
-            DOC_NAME = filename
-        return jsonify({
-            'message': 'ok'
-        })
-
-
 @app.route('/production', methods=['GET', 'POST'])
 @login_required
 def production():
@@ -70,7 +52,6 @@ def production():
         production = ProductionModel()
         form.populate_obj(production)
         production.pro_image = IMAGE_NAME
-        production.pro_doc = DOC_NAME
         db.session.add(production)
         db.session.commit()
         flash(u'添加成功!')

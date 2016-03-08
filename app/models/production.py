@@ -15,9 +15,6 @@ class ProductionModel(db.Model):
     pro_image = db.Column(
         db.String(254),
         nullable=True, default=None)
-    pro_doc = db.Column(
-        db.String(254),
-        nullable=True, default=None)
 
     def __repr__(self):
         return self.pro_title
