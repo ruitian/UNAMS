@@ -84,6 +84,14 @@
                     </div>
                     {{ field_error(form.acachemy) }}
                 </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">上传附件<br/>(格式为doc)</label>
+                    <div class="col-sm-9">
+                        <input type="file" class="file" name="annex" id="annex"/>
+                    </div>
+                </div>
+
             </div>
         </div>
         <div class="col-md-12">
@@ -103,4 +111,15 @@
             </div>
         </div>
     </form>
+{% endblock %}
+{% block paper_file %}
+    <script>
+    $('#annex').fileinput({
+        language: 'zh',
+        showUpload: false,
+        showPreview: false,
+        allowedFileExtensions: ['doc', 'pdf', 'xls'],
+        key: 100
+    })
+    </script>
 {% endblock %}
