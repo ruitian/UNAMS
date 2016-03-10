@@ -19,7 +19,7 @@ class Config:
         "国际级",
         "赛区级",
         "国家级",
-        "省级级"
+        "省级"
     )
     COMPETITION_RATE = (
         "特等奖",
