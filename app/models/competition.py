@@ -43,6 +43,7 @@ class Project(db.Model):
 
     def project_to_json(self):
         return {
+            'project_id': self.id,
             'project_name': self.project_name
         }
 
@@ -92,7 +93,7 @@ class Competition(db.Model):
     __tablename__ = 'competition'
     id = db.Column(db.Integer, primary_key=True)
     id_project = db.Column(db.Integer,
-                           db.ForeignKey('project.id'), nullable=False)
+                           db.ForeignKey('project.id'))
     achievement_name = db.Column(db.String(128))
     awards_unit = db.Column(db.String(128))
     winning_time = db.Column(db.Date, nullable=False)

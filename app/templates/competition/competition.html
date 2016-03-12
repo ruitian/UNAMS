@@ -13,9 +13,10 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">竞赛项目</label>
                     <div class="col-sm-9">
-                        {{ form.project(class="form-control") }}
+                        <input type="text" class="form-control" list="projects" name="project_name"/>
+                        <datalist id="projects">
+                        </datalist>
                     </div>
-                    {{ field_error(form.project) }}
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">成果名称</label>
@@ -63,7 +64,7 @@
                 <div class="form-group">
                   <label class="col-sm-3 control-label">获奖证书</label>
                   <div class="col-sm-9">
-                    <input class="form-control" type="file" name="file" required> 
+                    <input class="form-control" type="file" name="file" required>
                   </div>
                 </div>
             </div>
@@ -81,4 +82,22 @@
             </div>
         </div>
     </form>
+{% endblock %}
+{% block competition_script %}
+<script>
+function get_project(){
+  var opt = "";
+  $.ajax({
+      url: '/competition/_get_project',
+      type: 'post',
+      success: function(data) {
+        for(var i=0; i<data['info'].length;i++) {
+          opt += "<option value=" + data['info'][i]['project_name'] + "/>";
+          $("#projects").html(opt);
+        }
+      }
+  })
+}
+window.onload=get_project;
+</script>
 {% endblock %}

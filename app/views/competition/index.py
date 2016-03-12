@@ -7,7 +7,7 @@ from flask import(
     request,
     current_app,
     abort,
-    json,
+    jsonify,
     send_from_directory
 )
 from ... models import (
@@ -43,11 +43,13 @@ def competition():
     CompetitionForm = Competition.model_form()
     form = CompetitionForm(request.form)
     if request.method == 'POST':
-
+        project_name = request.form['project_name']
+        project = Project.query.filter_by(project_name=project_name).first()
         if not form.validate():
             return render_template('competition/competition.html', form=form)
         competition = Competition()
         form.populate_obj(competition)
+        competition.id_project = project.id
         db.session.add(competition)
         db.session.commit()
 
@@ -95,6 +97,15 @@ def participant(id):
     StudentForm = Student.model_form()
     form = StudentForm()  # noqa
     return redirect(url_for('show_competition', id=competition.id))
+
+
+@app.route('/competition/_get_project', methods=['POST'])
+@login_required
+def get_project():
+    projects = Project.query.all()
+    return jsonify({
+        'info': [project.project_to_json() for project in projects]
+    })
 
 
 @app.route('/add_student', methods=['POST'])
