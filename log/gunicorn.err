@@ -1,0 +1,926 @@
+[2016-03-12 17:47:07 +0000] [4260] [INFO] Starting gunicorn 19.4.5
+[2016-03-12 17:47:07 +0000] [4260] [ERROR] Connection in use: ('0.0.0.0', 8080)
+[2016-03-12 17:47:07 +0000] [4260] [ERROR] Retrying in 1 second.
+[2016-03-12 17:47:08 +0000] [4260] [ERROR] Connection in use: ('0.0.0.0', 8080)
+[2016-03-12 17:47:08 +0000] [4260] [ERROR] Retrying in 1 second.
+[2016-03-12 17:47:09 +0000] [4260] [ERROR] Connection in use: ('0.0.0.0', 8080)
+[2016-03-12 17:47:09 +0000] [4260] [ERROR] Retrying in 1 second.
+[2016-03-12 17:47:10 +0000] [4260] [ERROR] Connection in use: ('0.0.0.0', 8080)
+[2016-03-12 17:47:10 +0000] [4260] [ERROR] Retrying in 1 second.
+[2016-03-12 17:47:11 +0000] [4260] [ERROR] Connection in use: ('0.0.0.0', 8080)
+[2016-03-12 17:47:11 +0000] [4260] [ERROR] Retrying in 1 second.
+[2016-03-12 17:47:12 +0000] [4260] [ERROR] Can't connect to ('0.0.0.0', 8080)
+[2016-03-12 20:18:20 +0000] [1417] [INFO] Starting gunicorn 19.4.5
+[2016-03-12 20:18:20 +0000] [1417] [INFO] Listening at: http://0.0.0.0:8080 (1417)
+[2016-03-12 20:18:20 +0000] [1417] [INFO] Using worker: sync
+[2016-03-12 20:18:20 +0000] [1422] [INFO] Booting worker with pid: 1422
+[2016-03-12 20:18:20 +0000] [1423] [INFO] Booting worker with pid: 1423
+[2016-03-12 20:18:20 +0000] [1424] [INFO] Booting worker with pid: 1424
+[2016-03-12 20:18:20 +0000] [1425] [INFO] Booting worker with pid: 1425
+[2016-03-12 20:21:17 +0000] [1423] [ERROR] Error handling request /production
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 130, in handle
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 171, in handle_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask_login.py", line 755, in decorated_view
+  File "/var/www/UNAMS/app/views/production/index.py", line 59, in production
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/templating.py", line 127, in render_template
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/jinja2/environment.py", line 830, in get_or_select_template
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/jinja2/environment.py", line 791, in get_template
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/jinja2/environment.py", line 765, in _load_template
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/jinja2/loaders.py", line 113, in load
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/templating.py", line 64, in get_source
+TemplateNotFound: production/production.html
+[2016-03-12 20:21:18 +0000] [1424] [ERROR] Error handling request /production
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 130, in handle
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 171, in handle_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask_login.py", line 755, in decorated_view
+  File "/var/www/UNAMS/app/views/production/index.py", line 59, in production
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/templating.py", line 127, in render_template
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/jinja2/environment.py", line 830, in get_or_select_template
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/jinja2/environment.py", line 791, in get_template
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/jinja2/environment.py", line 765, in _load_template
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/jinja2/loaders.py", line 113, in load
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/templating.py", line 64, in get_source
+TemplateNotFound: production/production.html
+[2016-03-12 20:23:08 +0000] [1424] [ERROR] Error handling request /robots.txt
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 130, in handle
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 171, in handle_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1478, in full_dispatch_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1577, in make_response
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/werkzeug/wrappers.py", line 827, in force_type
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/werkzeug/wrappers.py", line 56, in _run_wsgi_app
+ImportError: No module named test
+[2016-03-12 20:23:36 +0000] [1422] [ERROR] Error handling request /favicon.ico
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 130, in handle
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 171, in handle_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1478, in full_dispatch_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1577, in make_response
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/werkzeug/wrappers.py", line 827, in force_type
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/werkzeug/wrappers.py", line 56, in _run_wsgi_app
+ImportError: No module named test
+[2016-03-12 20:23:36 +0000] [1424] [ERROR] Error handling request /favicon.ico
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 130, in handle
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 171, in handle_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1478, in full_dispatch_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1577, in make_response
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/werkzeug/wrappers.py", line 827, in force_type
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/werkzeug/wrappers.py", line 56, in _run_wsgi_app
+ImportError: No module named test
+[2016-03-12 20:23:38 +0000] [1424] [ERROR] Error handling request /favicon.ico
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 130, in handle
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 171, in handle_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1478, in full_dispatch_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1577, in make_response
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/werkzeug/wrappers.py", line 827, in force_type
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/werkzeug/wrappers.py", line 56, in _run_wsgi_app
+ImportError: No module named test
+[2016-03-12 20:23:38 +0000] [1422] [ERROR] Error handling request /favicon.ico
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 130, in handle
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 171, in handle_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1478, in full_dispatch_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1577, in make_response
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/werkzeug/wrappers.py", line 827, in force_type
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/werkzeug/wrappers.py", line 56, in _run_wsgi_app
+ImportError: No module named test
+[2016-03-12 20:28:05 +0000] [1425] [ERROR] Error handling request /zizhirongyu.html
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 130, in handle
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 171, in handle_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1478, in full_dispatch_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1577, in make_response
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/werkzeug/wrappers.py", line 827, in force_type
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/werkzeug/wrappers.py", line 56, in _run_wsgi_app
+ImportError: No module named test
+[2016-03-12 20:31:06 +0000] [1422] [INFO] Worker exiting (pid: 1422)
+[2016-03-12 20:31:06 +0000] [1424] [INFO] Worker exiting (pid: 1424)
+[2016-03-12 20:31:06 +0000] [1425] [INFO] Worker exiting (pid: 1425)
+[2016-03-12 20:31:06 +0000] [1417] [INFO] Handling signal: term
+[2016-03-12 20:31:06 +0000] [1423] [INFO] Worker exiting (pid: 1423)
+[2016-03-13 13:23:45 +0000] [2254] [INFO] Starting gunicorn 19.4.5
+[2016-03-13 13:23:45 +0000] [2254] [INFO] Listening at: http://0.0.0.0:8080 (2254)
+[2016-03-13 13:23:45 +0000] [2254] [INFO] Using worker: sync
+[2016-03-13 13:23:45 +0000] [2259] [INFO] Booting worker with pid: 2259
+[2016-03-13 13:23:46 +0000] [2262] [INFO] Booting worker with pid: 2262
+[2016-03-13 13:23:46 +0000] [2263] [INFO] Booting worker with pid: 2263
+[2016-03-13 13:23:46 +0000] [2264] [INFO] Booting worker with pid: 2264
+[2016-03-13 13:23:59 +0000] [2259] [ERROR] Error handling request /login?next=%2Fproduction
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 130, in handle
+    self.handle_request(listener, req, client, addr)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 171, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/UNAMS/app/views/auth/auth.py", line 41, in login
+    user = UserModel.query.filter_by(user_name=form.username.data).first()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/sqlalchemy/orm/query.py", line 2367, in first
+    ret = list(self[0:1])
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/sqlalchemy/orm/query.py", line 2228, in __getitem__
+    return list(res)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/sqlalchemy/orm/query.py", line 2438, in __iter__
+    return self._execute_and_instances(context)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/sqlalchemy/orm/query.py", line 2453, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/sqlalchemy/engine/base.py", line 729, in execute
+    return meth(self, multiparams, params)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/sqlalchemy/sql/elements.py", line 322, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/sqlalchemy/engine/base.py", line 826, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/sqlalchemy/engine/base.py", line 958, in _execute_context
+    context)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/sqlalchemy/engine/base.py", line 1159, in _handle_dbapi_exception
+    exc_info
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/sqlalchemy/util/compat.py", line 199, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/sqlalchemy/engine/base.py", line 951, in _execute_context
+    context)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/sqlalchemy/engine/default.py", line 436, in do_execute
+    cursor.execute(statement, parameters)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/MySQLdb/cursors.py", line 226, in execute
+    self.errorhandler(self, exc, value)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorvalue
+ProgrammingError: (ProgrammingError) (1146, "Table 'unams.user' doesn't exist") 'SELECT user.id AS user_id, user.user_name AS user_user_name, user.nick_name AS user_nick_name, user.user_password_hash AS user_user_password_hash, user.user_image AS user_user_image, user.date_created AS user_date_created, user.id_role AS user_id_role, user.id_unit AS user_id_unit \nFROM user \nWHERE user.user_name = %s \n LIMIT %s' ('admin', 1)
+[2016-03-13 14:17:28 +0000] [2263] [ERROR] Error handling request /add_student
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 130, in handle
+    self.handle_request(listener, req, client, addr)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 171, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask_login.py", line 758, in decorated_view
+    return func(*args, **kwargs)
+  File "/var/www/UNAMS/app/views/competition/index.py", line 117, in add_student
+    id_acachemy = int(request.form['id_acachemy'])
+ValueError: invalid literal for int() with base 10: ''
+[2016-03-13 14:18:18 +0000] [2254] [CRITICAL] WORKER TIMEOUT (pid:2262)
+[2016-03-13 14:18:18 +0000] [2262] [INFO] Worker exiting (pid: 2262)
+[2016-03-13 14:18:18 +0000] [2335] [INFO] Booting worker with pid: 2335
+/var/www/UNAMS/unams/local/lib/python2.7/site-packages/sqlalchemy/engine/default.py:436: Warning: Truncated incorrect DOUBLE value: '080714T'
+  cursor.execute(statement, parameters)
+/var/www/UNAMS/unams/local/lib/python2.7/site-packages/sqlalchemy/engine/default.py:436: Warning: Data truncated for column 'major_id' at row 1
+  cursor.execute(statement, parameters)
+/var/www/UNAMS/unams/local/lib/python2.7/site-packages/sqlalchemy/engine/default.py:436: Warning: Truncated incorrect DOUBLE value: '080717W'
+  cursor.execute(statement, parameters)
+/var/www/UNAMS/unams/local/lib/python2.7/site-packages/sqlalchemy/engine/default.py:436: Warning: Truncated incorrect DOUBLE value: '080218S'
+  cursor.execute(statement, parameters)
+/var/www/UNAMS/unams/local/lib/python2.7/site-packages/sqlalchemy/engine/default.py:436: Warning: Truncated incorrect DOUBLE value: '020301K'
+  cursor.execute(statement, parameters)
+/var/www/UNAMS/unams/local/lib/python2.7/site-packages/sqlalchemy/engine/default.py:436: Warning: Truncated incorrect DOUBLE value: '120203K'
+  cursor.execute(statement, parameters)
+/var/www/UNAMS/unams/local/lib/python2.7/site-packages/sqlalchemy/engine/default.py:436: Warning: Truncated incorrect DOUBLE value: '120201K'
+  cursor.execute(statement, parameters)
+/var/www/UNAMS/unams/local/lib/python2.7/site-packages/sqlalchemy/engine/default.py:436: Warning: Truncated incorrect DOUBLE value: '030101K'
+  cursor.execute(statement, parameters)
+/var/www/UNAMS/unams/local/lib/python2.7/site-packages/sqlalchemy/engine/default.py:436: Warning: Truncated incorrect DOUBLE value: '040202K'
+  cursor.execute(statement, parameters)
+[2016-03-13 14:34:59 +0000] [2254] [INFO] Handling signal: term
+[2016-03-13 14:34:59 +0000] [2264] [INFO] Worker exiting (pid: 2264)
+[2016-03-13 14:34:59 +0000] [2335] [INFO] Worker exiting (pid: 2335)
+[2016-03-13 14:34:59 +0000] [2259] [INFO] Worker exiting (pid: 2259)
+[2016-03-13 14:34:59 +0000] [2263] [INFO] Worker exiting (pid: 2263)
+[2016-03-13 14:35:24 +0000] [2427] [INFO] Starting gunicorn 19.4.5
+[2016-03-13 14:35:24 +0000] [2427] [INFO] Listening at: http://0.0.0.0:8080 (2427)
+[2016-03-13 14:35:24 +0000] [2427] [INFO] Using worker: sync
+[2016-03-13 14:35:24 +0000] [2432] [INFO] Booting worker with pid: 2432
+[2016-03-13 14:35:24 +0000] [2435] [INFO] Booting worker with pid: 2435
+[2016-03-13 14:35:24 +0000] [2436] [INFO] Booting worker with pid: 2436
+[2016-03-13 14:35:24 +0000] [2437] [INFO] Booting worker with pid: 2437
+[2016-03-13 14:41:42 +0000] [2427] [INFO] Handling signal: term
+[2016-03-13 14:41:42 +0000] [2432] [INFO] Worker exiting (pid: 2432)
+[2016-03-13 14:41:42 +0000] [2435] [INFO] Worker exiting (pid: 2435)
+[2016-03-13 14:41:42 +0000] [2436] [INFO] Worker exiting (pid: 2436)
+[2016-03-13 14:41:42 +0000] [2437] [INFO] Worker exiting (pid: 2437)
+[2016-03-13 14:42:16 +0000] [2563] [INFO] Starting gunicorn 19.4.5
+[2016-03-13 14:42:16 +0000] [2563] [INFO] Listening at: http://0.0.0.0:8080 (2563)
+[2016-03-13 14:42:16 +0000] [2563] [INFO] Using worker: sync
+[2016-03-13 14:42:16 +0000] [2568] [INFO] Booting worker with pid: 2568
+[2016-03-13 14:42:16 +0000] [2569] [INFO] Booting worker with pid: 2569
+[2016-03-13 14:42:16 +0000] [2572] [INFO] Booting worker with pid: 2572
+[2016-03-13 14:42:16 +0000] [2573] [INFO] Booting worker with pid: 2573
+[2016-03-13 14:51:39 +0000] [2568] [INFO] Worker exiting (pid: 2568)
+[2016-03-13 14:51:39 +0000] [2569] [INFO] Worker exiting (pid: 2569)
+[2016-03-13 14:51:39 +0000] [2572] [INFO] Worker exiting (pid: 2572)
+[2016-03-13 14:51:39 +0000] [2573] [INFO] Worker exiting (pid: 2573)
+[2016-03-13 14:51:39 +0000] [2563] [INFO] Handling signal: term
+[2016-03-13 14:53:17 +0000] [1388] [INFO] Starting gunicorn 19.4.5
+[2016-03-13 14:53:17 +0000] [1388] [INFO] Listening at: http://0.0.0.0:8080 (1388)
+[2016-03-13 14:53:17 +0000] [1388] [INFO] Using worker: sync
+[2016-03-13 14:53:17 +0000] [1393] [INFO] Booting worker with pid: 1393
+[2016-03-13 14:53:17 +0000] [1394] [INFO] Booting worker with pid: 1394
+[2016-03-13 14:53:17 +0000] [1395] [INFO] Booting worker with pid: 1395
+[2016-03-13 14:53:17 +0000] [1396] [INFO] Booting worker with pid: 1396
+[2016-03-13 14:58:05 +0000] [1388] [INFO] Handling signal: term
+[2016-03-13 14:58:05 +0000] [1393] [INFO] Worker exiting (pid: 1393)
+[2016-03-13 14:58:05 +0000] [1394] [INFO] Worker exiting (pid: 1394)
+[2016-03-13 14:58:05 +0000] [1395] [INFO] Worker exiting (pid: 1395)
+[2016-03-13 14:58:05 +0000] [1396] [INFO] Worker exiting (pid: 1396)
+[2016-03-13 15:02:04 +0000] [1498] [INFO] Starting gunicorn 19.4.5
+[2016-03-13 15:02:04 +0000] [1498] [INFO] Listening at: http://0.0.0.0:8080 (1498)
+[2016-03-13 15:02:04 +0000] [1498] [INFO] Using worker: sync
+[2016-03-13 15:02:04 +0000] [1503] [INFO] Booting worker with pid: 1503
+[2016-03-13 15:02:04 +0000] [1504] [INFO] Booting worker with pid: 1504
+[2016-03-13 15:02:05 +0000] [1507] [INFO] Booting worker with pid: 1507
+[2016-03-13 15:02:05 +0000] [1508] [INFO] Booting worker with pid: 1508
+[2016-03-13 19:04:31 +0000] [1508] [ERROR] Error handling request
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 174, in handle_request
+    resp.write_file(respiter)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/http/wsgi.py", line 397, in write_file
+    if not self.sendfile(respiter):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/http/wsgi.py", line 387, in sendfile
+    sent += sendfile(sockno, fileno, offset + sent, count)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/http/_sendfile.py", line 67, in sendfile
+    raise OSError(e, os.strerror(e))
+OSError: [Errno 32] Broken pipe
+[2016-03-13 19:06:42 +0000] [1508] [ERROR] Error handling request
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 174, in handle_request
+    resp.write_file(respiter)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/http/wsgi.py", line 397, in write_file
+    if not self.sendfile(respiter):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/http/wsgi.py", line 387, in sendfile
+    sent += sendfile(sockno, fileno, offset + sent, count)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/http/_sendfile.py", line 67, in sendfile
+    raise OSError(e, os.strerror(e))
+OSError: [Errno 32] Broken pipe
+[2016-03-13 19:06:42 +0000] [1507] [ERROR] Error handling request
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 174, in handle_request
+    resp.write_file(respiter)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/http/wsgi.py", line 397, in write_file
+    if not self.sendfile(respiter):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/http/wsgi.py", line 387, in sendfile
+    sent += sendfile(sockno, fileno, offset + sent, count)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/http/_sendfile.py", line 67, in sendfile
+    raise OSError(e, os.strerror(e))
+OSError: [Errno 32] Broken pipe
+[2016-03-13 21:27:44 +0000] [1507] [ERROR] Error handling request /upload_paper_content
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 130, in handle
+    self.handle_request(listener, req, client, addr)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 171, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask_login.py", line 758, in decorated_view
+    return func(*args, **kwargs)
+  File "/var/www/UNAMS/app/views/paper/index.py", line 123, in paper_content
+    file.save(file_url)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/werkzeug/datastructures.py", line 2585, in save
+    dst = open(dst, 'wb')
+IOError: [Errno 2] No such file or directory: '/var/www/UNAMS/app/uploads/paper/contents/localhost_3000_show_competition_3.png'
+[2016-03-13 21:28:26 +0000] [1507] [ERROR] Error handling request /paper
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 130, in handle
+    self.handle_request(listener, req, client, addr)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 171, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask_login.py", line 758, in decorated_view
+    return func(*args, **kwargs)
+  File "/var/www/UNAMS/app/views/paper/index.py", line 44, in paper
+    cover_url+os.sep+str(paper_cover_name))
+OSError: [Errno 2] No such file or directory
+[2016-03-13 21:48:06 +0000] [1503] [ERROR] Error handling request /paper
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 130, in handle
+    self.handle_request(listener, req, client, addr)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 171, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask_login.py", line 758, in decorated_view
+    return func(*args, **kwargs)
+  File "/var/www/UNAMS/app/views/paper/index.py", line 44, in paper
+    cover_url+os.sep+str(paper_cover_name))
+OSError: [Errno 2] No such file or directory
+[2016-03-14 01:47:28 +0000] [1498] [CRITICAL] WORKER TIMEOUT (pid:1503)
+[2016-03-14 01:47:28 +0000] [1503] [INFO] Worker exiting (pid: 1503)
+[2016-03-14 01:47:28 +0000] [1920] [INFO] Booting worker with pid: 1920
+[2016-03-14 08:06:35 +0000] [1920] [ERROR] Error handling request /paper
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 130, in handle
+    self.handle_request(listener, req, client, addr)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 171, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask_login.py", line 758, in decorated_view
+    return func(*args, **kwargs)
+  File "/var/www/UNAMS/app/views/paper/index.py", line 44, in paper
+    cover_url+os.sep+str(paper_cover_name))
+OSError: [Errno 2] No such file or directory
+[2016-03-14 16:30:10 +0000] [1507] [ERROR] Error handling request /paper
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 130, in handle
+    self.handle_request(listener, req, client, addr)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 171, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask_login.py", line 758, in decorated_view
+    return func(*args, **kwargs)
+  File "/var/www/UNAMS/app/views/paper/index.py", line 69, in paper
+    content_url+os.sep+str(paper_content_name))
+OSError: [Errno 2] No such file or directory
+[2016-03-14 16:46:05 +0000] [1504] [ERROR] Error handling request /patent
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 130, in handle
+    self.handle_request(listener, req, client, addr)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 171, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask_login.py", line 758, in decorated_view
+    return func(*args, **kwargs)
+  File "/var/www/UNAMS/app/views/patent/index.py", line 37, in patent
+    files.save(file_url)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/werkzeug/datastructures.py", line 2585, in save
+    dst = open(dst, 'wb')
+IOError: [Errno 2] No such file or directory: '/var/www/UNAMS/app/uploads/patent/patent_1.doc'
+[2016-03-14 16:52:55 +0000] [1508] [ERROR] Error handling request /patent
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 130, in handle
+    self.handle_request(listener, req, client, addr)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 171, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask_login.py", line 758, in decorated_view
+    return func(*args, **kwargs)
+  File "/var/www/UNAMS/app/views/patent/index.py", line 37, in patent
+    files.save(file_url)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/werkzeug/datastructures.py", line 2585, in save
+    dst = open(dst, 'wb')
+IOError: [Errno 2] No such file or directory: '/var/www/UNAMS/app/uploads/patent/patent_2.doc'
+[2016-03-14 17:03:06 +0000] [1920] [ERROR] Error handling request /paper
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 130, in handle
+    self.handle_request(listener, req, client, addr)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 171, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask_login.py", line 758, in decorated_view
+    return func(*args, **kwargs)
+  File "/var/www/UNAMS/app/views/paper/index.py", line 44, in paper
+    cover_url+os.sep+str(paper_cover_name))
+OSError: [Errno 2] No such file or directory
+[2016-03-14 17:04:20 +0000] [1498] [INFO] Handling signal: term
+[2016-03-14 17:04:20 +0000] [1504] [INFO] Worker exiting (pid: 1504)
+[2016-03-14 17:04:20 +0000] [1920] [INFO] Worker exiting (pid: 1920)
+[2016-03-14 17:04:20 +0000] [1507] [INFO] Worker exiting (pid: 1507)
+[2016-03-14 17:04:20 +0000] [1508] [INFO] Worker exiting (pid: 1508)
+[2016-03-14 17:04:20 +0000] [2602] [INFO] Starting gunicorn 19.4.5
+[2016-03-14 17:04:20 +0000] [2602] [INFO] Listening at: http://0.0.0.0:8080 (2602)
+[2016-03-14 17:04:20 +0000] [2602] [INFO] Using worker: sync
+[2016-03-14 17:04:20 +0000] [2607] [INFO] Booting worker with pid: 2607
+[2016-03-14 17:04:20 +0000] [2608] [INFO] Booting worker with pid: 2608
+[2016-03-14 17:04:20 +0000] [2609] [INFO] Booting worker with pid: 2609
+[2016-03-14 17:04:20 +0000] [2610] [INFO] Booting worker with pid: 2610
+[2016-03-14 17:04:42 +0000] [2602] [INFO] Handling signal: term
+[2016-03-14 17:04:42 +0000] [2608] [INFO] Worker exiting (pid: 2608)
+[2016-03-14 17:04:42 +0000] [2610] [INFO] Worker exiting (pid: 2610)
+[2016-03-14 17:04:42 +0000] [2609] [INFO] Worker exiting (pid: 2609)
+[2016-03-14 17:04:42 +0000] [2607] [INFO] Worker exiting (pid: 2607)
+[2016-03-14 17:04:55 +0000] [2624] [INFO] Starting gunicorn 19.4.5
+[2016-03-14 17:04:55 +0000] [2624] [INFO] Listening at: http://0.0.0.0:8080 (2624)
+[2016-03-14 17:04:55 +0000] [2624] [INFO] Using worker: sync
+[2016-03-14 17:04:55 +0000] [2629] [INFO] Booting worker with pid: 2629
+[2016-03-14 17:04:55 +0000] [2632] [INFO] Booting worker with pid: 2632
+[2016-03-14 17:04:55 +0000] [2633] [INFO] Booting worker with pid: 2633
+[2016-03-14 17:04:55 +0000] [2634] [INFO] Booting worker with pid: 2634
+[2016-03-14 17:05:32 +0000] [2629] [ERROR] Error handling request /paper
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 130, in handle
+    self.handle_request(listener, req, client, addr)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 171, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask_login.py", line 758, in decorated_view
+    return func(*args, **kwargs)
+  File "/var/www/UNAMS/app/views/paper/index.py", line 44, in paper
+    cover_url+os.sep+str(paper_cover_name))
+OSError: [Errno 2] No such file or directory
+[2016-03-14 17:45:07 +0000] [2634] [ERROR] Error handling request /login
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 130, in handle
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/sync.py", line 171, in handle_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1836, in __call__
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1820, in wsgi_app
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1403, in handle_exception
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+  File "/var/www/UNAMS/app/views/auth/auth.py", line 46, in login
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/templating.py", line 127, in render_template
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/jinja2/environment.py", line 830, in get_or_select_template
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/jinja2/environment.py", line 791, in get_template
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/jinja2/environment.py", line 765, in _load_template
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/jinja2/loaders.py", line 113, in load
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/flask/templating.py", line 64, in get_source
+TemplateNotFound: auth/login.html
+[2016-03-14 17:47:35 +0000] [2624] [INFO] Handling signal: term
+[2016-03-14 17:47:35 +0000] [2632] [INFO] Worker exiting (pid: 2632)
+[2016-03-14 17:47:35 +0000] [2633] [INFO] Worker exiting (pid: 2633)
+[2016-03-14 17:47:35 +0000] [2634] [INFO] Worker exiting (pid: 2634)
+[2016-03-14 17:47:35 +0000] [2629] [INFO] Worker exiting (pid: 2629)
+[2016-03-14 17:48:05 +0000] [2764] [INFO] Starting gunicorn 19.4.5
+[2016-03-14 17:48:05 +0000] [2764] [INFO] Listening at: http://0.0.0.0:8080 (2764)
+[2016-03-14 17:48:05 +0000] [2764] [INFO] Using worker: sync
+[2016-03-14 17:48:05 +0000] [2769] [INFO] Booting worker with pid: 2769
+[2016-03-14 17:48:05 +0000] [2770] [INFO] Booting worker with pid: 2770
+[2016-03-14 17:48:05 +0000] [2771] [INFO] Booting worker with pid: 2771
+[2016-03-14 17:48:05 +0000] [2773] [INFO] Booting worker with pid: 2773
+[2016-03-15 02:45:14 +0000] [2764] [CRITICAL] WORKER TIMEOUT (pid:2770)
+[2016-03-15 02:45:14 +0000] [2770] [INFO] Worker exiting (pid: 2770)
+[2016-03-15 02:45:14 +0000] [3101] [INFO] Booting worker with pid: 3101
+[2016-03-16 02:45:26 +0000] [2764] [CRITICAL] WORKER TIMEOUT (pid:2771)
+[2016-03-16 02:45:26 +0000] [2771] [INFO] Worker exiting (pid: 2771)
+[2016-03-16 02:45:26 +0000] [3828] [INFO] Booting worker with pid: 3828
+[2016-03-19 03:10:44 +0000] [2764] [CRITICAL] WORKER TIMEOUT (pid:3828)
+[2016-03-19 03:10:44 +0000] [3828] [INFO] Worker exiting (pid: 3828)
+[2016-03-19 03:10:44 +0000] [6164] [INFO] Booting worker with pid: 6164
+[2016-03-19 03:10:44 +0000] [6164] [ERROR] Exception in worker process:
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/arbiter.py", line 515, in spawn_worker
+    worker.init_process()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/base.py", line 122, in init_process
+    self.load_wsgi()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/base.py", line 130, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/util.py", line 357, in import_app
+    __import__(module)
+  File "/var/www/UNAMS/manage.py", line 2, in <module>
+    from app import app, db
+  File "/var/www/UNAMS/app/__init__.py", line 32, in <module>
+    from views import *
+  File "/var/www/UNAMS/app/views/__init__.py", line 3, in <module>
+    from .auth import *  # noqa
+  File "/var/www/UNAMS/app/views/auth/__init__.py", line 1, in <module>
+    from .auth import *  # noqa
+  File "/var/www/UNAMS/app/views/auth/auth.py", line 257, in <module>
+    @bp.route('/qq/login/authorized')
+NameError: name 'bp' is not defined
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/arbiter.py", line 515, in spawn_worker
+    worker.init_process()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/base.py", line 122, in init_process
+    self.load_wsgi()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/base.py", line 130, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/util.py", line 357, in import_app
+    __import__(module)
+  File "/var/www/UNAMS/manage.py", line 2, in <module>
+    from app import app, db
+  File "/var/www/UNAMS/app/__init__.py", line 32, in <module>
+    from views import *
+  File "/var/www/UNAMS/app/views/__init__.py", line 3, in <module>
+    from .auth import *  # noqa
+  File "/var/www/UNAMS/app/views/auth/__init__.py", line 1, in <module>
+    from .auth import *  # noqa
+  File "/var/www/UNAMS/app/views/auth/auth.py", line 257, in <module>
+    @bp.route('/qq/login/authorized')
+NameError: name 'bp' is not defined
+[2016-03-19 03:10:44 +0000] [6164] [INFO] Worker exiting (pid: 6164)
+[2016-03-19 03:10:44 +0000] [2769] [INFO] Worker exiting (pid: 2769)
+[2016-03-19 03:10:44 +0000] [2773] [INFO] Worker exiting (pid: 2773)
+[2016-03-19 03:10:44 +0000] [3101] [INFO] Worker exiting (pid: 3101)
+[2016-03-19 03:10:44 +0000] [2764] [INFO] Shutting down: Master
+[2016-03-19 03:10:44 +0000] [2764] [INFO] Reason: Worker failed to boot.
+[2016-03-19 12:37:18 +0000] [6568] [INFO] Starting gunicorn 19.4.5
+[2016-03-19 12:37:18 +0000] [6568] [INFO] Listening at: http://0.0.0.0:8080 (6568)
+[2016-03-19 12:37:18 +0000] [6568] [INFO] Using worker: sync
+[2016-03-19 12:37:18 +0000] [6573] [INFO] Booting worker with pid: 6573
+[2016-03-19 12:37:18 +0000] [6574] [INFO] Booting worker with pid: 6574
+[2016-03-19 12:37:18 +0000] [6577] [INFO] Booting worker with pid: 6577
+[2016-03-19 12:37:18 +0000] [6580] [INFO] Booting worker with pid: 6580
+[2016-03-19 12:37:19 +0000] [6573] [ERROR] Exception in worker process:
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/arbiter.py", line 515, in spawn_worker
+    worker.init_process()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/base.py", line 122, in init_process
+    self.load_wsgi()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/base.py", line 130, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/util.py", line 357, in import_app
+    __import__(module)
+  File "/var/www/UNAMS/manage.py", line 2, in <module>
+    from app import app, db
+  File "/var/www/UNAMS/app/__init__.py", line 32, in <module>
+    from views import *
+  File "/var/www/UNAMS/app/views/__init__.py", line 3, in <module>
+    from .auth import *  # noqa
+  File "/var/www/UNAMS/app/views/auth/__init__.py", line 1, in <module>
+    from .auth import *  # noqa
+  File "/var/www/UNAMS/app/views/auth/auth.py", line 257, in <module>
+    @bp.route('/qq/login/authorized')
+NameError: name 'bp' is not defined
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/arbiter.py", line 515, in spawn_worker
+    worker.init_process()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/base.py", line 122, in init_process
+    self.load_wsgi()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/base.py", line 130, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/util.py", line 357, in import_app
+    __import__(module)
+  File "/var/www/UNAMS/manage.py", line 2, in <module>
+    from app import app, db
+  File "/var/www/UNAMS/app/__init__.py", line 32, in <module>
+    from views import *
+  File "/var/www/UNAMS/app/views/__init__.py", line 3, in <module>
+    from .auth import *  # noqa
+  File "/var/www/UNAMS/app/views/auth/__init__.py", line 1, in <module>
+    from .auth import *  # noqa
+  File "/var/www/UNAMS/app/views/auth/auth.py", line 257, in <module>
+    @bp.route('/qq/login/authorized')
+NameError: name 'bp' is not defined
+[2016-03-19 12:37:19 +0000] [6573] [INFO] Worker exiting (pid: 6573)
+[2016-03-19 12:37:20 +0000] [6574] [ERROR] Exception in worker process:
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/arbiter.py", line 515, in spawn_worker
+    worker.init_process()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/base.py", line 122, in init_process
+    self.load_wsgi()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/base.py", line 130, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/util.py", line 357, in import_app
+    __import__(module)
+  File "/var/www/UNAMS/manage.py", line 2, in <module>
+    from app import app, db
+  File "/var/www/UNAMS/app/__init__.py", line 32, in <module>
+    from views import *
+  File "/var/www/UNAMS/app/views/__init__.py", line 3, in <module>
+    from .auth import *  # noqa
+  File "/var/www/UNAMS/app/views/auth/__init__.py", line 1, in <module>
+    from .auth import *  # noqa
+  File "/var/www/UNAMS/app/views/auth/auth.py", line 257, in <module>
+    @bp.route('/qq/login/authorized')
+NameError: name 'bp' is not defined
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/arbiter.py", line 515, in spawn_worker
+    worker.init_process()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/base.py", line 122, in init_process
+    self.load_wsgi()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/base.py", line 130, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/util.py", line 357, in import_app
+    __import__(module)
+  File "/var/www/UNAMS/manage.py", line 2, in <module>
+    from app import app, db
+  File "/var/www/UNAMS/app/__init__.py", line 32, in <module>
+    from views import *
+  File "/var/www/UNAMS/app/views/__init__.py", line 3, in <module>
+    from .auth import *  # noqa
+  File "/var/www/UNAMS/app/views/auth/__init__.py", line 1, in <module>
+    from .auth import *  # noqa
+  File "/var/www/UNAMS/app/views/auth/auth.py", line 257, in <module>
+    @bp.route('/qq/login/authorized')
+NameError: name 'bp' is not defined
+[2016-03-19 12:37:20 +0000] [6574] [INFO] Worker exiting (pid: 6574)
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/bin/gunicorn", line 11, in <module>
+    sys.exit(run())
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/wsgiapp.py", line 74, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/base.py", line 192, in run
+    super(Application, self).run()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/base.py", line 72, in run
+    Arbiter(self).run()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/arbiter.py", line 206, in run
+    self.halt(reason=inst.reason, exit_status=inst.exit_status)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/arbiter.py", line 302, in halt
+    self.stop()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/arbiter.py", line 347, in stop
+    time.sleep(0.1)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/arbiter.py", line 219, in handle_chld
+    self.reap_workers()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/arbiter.py", line 464, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+[2016-03-19 12:37:20 +0000] [6577] [ERROR] Exception in worker process:
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/arbiter.py", line 515, in spawn_worker
+    worker.init_process()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/base.py", line 122, in init_process
+    self.load_wsgi()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/base.py", line 130, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/util.py", line 357, in import_app
+    __import__(module)
+  File "/var/www/UNAMS/manage.py", line 2, in <module>
+    from app import app, db
+  File "/var/www/UNAMS/app/__init__.py", line 32, in <module>
+    from views import *
+  File "/var/www/UNAMS/app/views/__init__.py", line 3, in <module>
+    from .auth import *  # noqa
+  File "/var/www/UNAMS/app/views/auth/__init__.py", line 1, in <module>
+    from .auth import *  # noqa
+  File "/var/www/UNAMS/app/views/auth/auth.py", line 257, in <module>
+    @bp.route('/qq/login/authorized')
+NameError: name 'bp' is not defined
+Traceback (most recent call last):
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/arbiter.py", line 515, in spawn_worker
+    worker.init_process()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/base.py", line 122, in init_process
+    self.load_wsgi()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/workers/base.py", line 130, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/base.py", line 67, in wsgi
+    self.callable = self.load()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/wsgiapp.py", line 65, in load
+    return self.load_wsgiapp()
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/app/wsgiapp.py", line 52, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/var/www/UNAMS/unams/local/lib/python2.7/site-packages/gunicorn/util.py", line 357, in import_app
+    __import__(module)
+  File "/var/www/UNAMS/manage.py", line 2, in <module>
+    from app import app, db
+  File "/var/www/UNAMS/app/__init__.py", line 32, in <module>
+    from views import *
+  File "/var/www/UNAMS/app/views/__init__.py", line 3, in <module>
+    from .auth import *  # noqa
+  File "/var/www/UNAMS/app/views/auth/__init__.py", line 1, in <module>
+    from .auth import *  # noqa
+  File "/var/www/UNAMS/app/views/auth/auth.py", line 257, in <module>
+    @bp.route('/qq/login/authorized')
+NameError: name 'bp' is not defined
+[2016-03-19 12:37:20 +0000] [6577] [INFO] Worker exiting (pid: 6577)
+[2016-03-19 12:39:13 +0000] [6630] [INFO] Starting gunicorn 19.4.5
+[2016-03-19 12:39:13 +0000] [6630] [INFO] Listening at: http://0.0.0.0:8080 (6630)
+[2016-03-19 12:39:13 +0000] [6630] [INFO] Using worker: sync
+[2016-03-19 12:39:13 +0000] [6635] [INFO] Booting worker with pid: 6635
+[2016-03-19 12:39:13 +0000] [6636] [INFO] Booting worker with pid: 6636
+[2016-03-19 12:39:13 +0000] [6637] [INFO] Booting worker with pid: 6637
+[2016-03-19 12:39:13 +0000] [6641] [INFO] Booting worker with pid: 6641
+[2016-03-20 02:58:34 +0000] [6630] [CRITICAL] WORKER TIMEOUT (pid:6635)
+[2016-03-20 02:58:34 +0000] [6635] [INFO] Worker exiting (pid: 6635)
+[2016-03-20 02:58:34 +0000] [7268] [INFO] Booting worker with pid: 7268
+[2016-03-21 02:58:02 +0000] [6630] [CRITICAL] WORKER TIMEOUT (pid:6641)
+[2016-03-21 02:58:02 +0000] [6641] [INFO] Worker exiting (pid: 6641)
+[2016-03-21 02:58:02 +0000] [8289] [INFO] Booting worker with pid: 8289
+[2016-03-22 02:59:23 +0000] [6630] [CRITICAL] WORKER TIMEOUT (pid:6636)
+[2016-03-22 02:59:23 +0000] [6636] [INFO] Worker exiting (pid: 6636)
+[2016-03-22 02:59:23 +0000] [9379] [INFO] Booting worker with pid: 9379
+[2016-03-23 20:34:33 +0000] [6630] [INFO] Handling signal: term
+[2016-03-23 20:34:33 +0000] [8289] [INFO] Worker exiting (pid: 8289)
+[2016-03-23 20:34:33 +0000] [7268] [INFO] Worker exiting (pid: 7268)
+[2016-03-23 20:34:33 +0000] [9379] [INFO] Worker exiting (pid: 9379)
+[2016-03-23 20:34:33 +0000] [6637] [INFO] Worker exiting (pid: 6637)
+[2016-03-25 12:27:31 +0000] [18096] [INFO] Starting gunicorn 19.4.5
+[2016-03-25 12:27:31 +0000] [18096] [INFO] Listening at: http://0.0.0.0:8080 (18096)
+[2016-03-25 12:27:31 +0000] [18096] [INFO] Using worker: sync
+[2016-03-25 12:27:31 +0000] [18101] [INFO] Booting worker with pid: 18101
+[2016-03-25 12:27:31 +0000] [18102] [INFO] Booting worker with pid: 18102
+[2016-03-25 12:27:31 +0000] [18103] [INFO] Booting worker with pid: 18103
+[2016-03-25 12:27:31 +0000] [18104] [INFO] Booting worker with pid: 18104
