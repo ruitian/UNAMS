@@ -12,7 +12,7 @@ from flask import (
 from werkzeug import secure_filename
 import os
 
-ALLOWED_EXTENSIONS = set(['jpg', 'png', 'gif', 'jpeg'])
+ALLOWED_EXTENSIONS = set(['jpg', 'png', 'gif', 'jpeg', 'doc'])
 UPLOAD_FOLDER = app.config['UPLOAD_FOLDER']
 PAPER_COVER_NAME = None
 PAPER_CATALOGUE = []
@@ -48,7 +48,7 @@ def paper():
         for file in PAPER_CATALOGUE:
             filename = secure_filename(file.filename)
             paper_catalogue_name = \
-                'paper_catalogue_%s_%s' % (
+                'paper_catalogue_%s_%s.jpg' % (
                     paper.id, PAPER_CATALOGUE.index(file))
             os.rename(
                 catalogue_url+os.sep+str(filename),
