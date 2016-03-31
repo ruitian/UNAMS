@@ -44,13 +44,13 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-	USERNAME = os.getenv('MYSQL_USERNAME') or 'root'
-	PASSWORD = os.getenv('MYSQL_PASSWORD') or 'password'
-	HOST = os.getenv('MYSQL_PORT_3306_TCP_ADDR') or 'localhost'
-	PORT = os.getenv('MYSQL_PORT_3306_TCP_PORT') or 3306
-	DATABASE = os.getenv('MYSQL_INSTANCE_NAME') or 'unams'
-    SQLALCHEMY_DATABASE_URI = 'mysql://%s:%s@%s:%s/%s' % 
-				(USERNAME, PASSWORD, HOST, PORT, DATABASE)
+    USERNAME = os.getenv('MYSQL_USERNAME') or 'root'
+    PASSWORD = os.getenv('MYSQL_PASSWORD') or 'password'
+    HOST = os.getenv('MYSQL_PORT_3306_TCP_ADDR') or 'localhost'
+    PORT = os.getenv('MYSQL_PORT_3306_TCP_PORT') or 3306
+    DATABASE = os.getenv('MYSQL_INSTANCE_NAME') or 'unams'
+    SQLALCHEMY_DATABASE_URI = 'mysql://%s:%s@%s:%s/%s' % (
+        USERNAME, PASSWORD, HOST, PORT, DATABASE)
 
 
 class TestingConfig(Config):
